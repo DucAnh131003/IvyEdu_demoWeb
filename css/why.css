@@ -1,0 +1,327 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        /* ====== CHUNG ====== */
+        .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            color: #1A3C6E;
+            margin-bottom: 12px;
+        }
+
+        .section-title .highlight {
+            color: #F5A623;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* ============================================= */
+        /* ===== SECTION 1: KHÓA HỌC NỔI BẬT ===== */
+        /* ============================================= */
+        .courses {
+            background: #fff;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .course-card {
+            background: #f8faff;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e9edf4;
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(26, 60, 110, 0.12);
+        }
+
+        .course-image {
+            height: 200px;
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 48px;
+            position: relative;
+        }
+
+        .course-image .tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #F5A623;
+            color: #1A3C6E;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .course-image .tag.hot {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .course-card:nth-child(2) .course-image {
+            background: linear-gradient(135deg, #F5A623, #e09515);
+        }
+
+        .course-card:nth-child(3) .course-image {
+            background: linear-gradient(135deg, #2ecc71, #1ea85a);
+        }
+
+        .course-body {
+            padding: 24px 22px 28px;
+        }
+
+        .course-body h3 {
+            font-size: 20px;
+            color: #1A3C6E;
+            margin-bottom: 8px;
+        }
+
+        .course-body .desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .course-body .price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #F5A623;
+            margin-bottom: 16px;
+        }
+
+        .course-body .price span {
+            font-size: 14px;
+            font-weight: 400;
+            color: #94a3b8;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .course-body .btn-detail {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 30px;
+            background: #1A3C6E;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .course-body .btn-detail:hover {
+            background: #0f2b4f;
+            gap: 14px;
+        }
+
+        /* Nút Xem tất cả */
+        .view-all {
+            text-align: center;
+        }
+
+        .btn-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 40px;
+            border-radius: 50px;
+            background: transparent;
+            color: #1A3C6E;
+            border: 2px solid #1A3C6E;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view-all:hover {
+            background: #1A3C6E;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(26, 60, 110, 0.2);
+        }
+
+        /* ============================================= */
+        /* ===== SECTION 2: WHY CHOOSE US ===== */
+        /* ============================================= */
+        .why-choose {
+            background: #f8faff;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .why-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px 28px;
+            border: 1px solid #e9edf4;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(26, 60, 110, 0.08);
+        }
+
+        .why-card .icon-wrap {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .why-card:nth-child(1) .icon-wrap {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+
+        .why-card:nth-child(2) .icon-wrap {
+            background: linear-gradient(135deg, #F5A623, #e09515);
+        }
+
+        .why-card:nth-child(3) .icon-wrap {
+            background: linear-gradient(135deg, #2ecc71, #1ea85a);
+        }
+
+        .why-card h4 {
+            font-size: 18px;
+            color: #1A3C6E;
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .why-card .stat-highlight {
+            display: block;
+            font-size: 36px;
+            font-weight: 800;
+            color: #F5A623;
+            line-height: 1.2;
+        }
+
+        .why-card .stat-highlight .plus {
+            font-size: 24px;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 1024px) {
+            .section-container {
+                padding: 40px 24px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            .courses-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+                margin: 0 auto 30px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .course-image {
+                height: 170px;
+            }
+
+            .why-card .stat-highlight {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 30px 16px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .course-body h3 {
+                font-size: 18px;
+            }
+
+            .course-body .price {
+                font-size: 18px;
+            }
+
+            .btn-view-all {
+                padding: 12px 28px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .why-card {
+                padding: 24px 20px;
+            }
+
+            .why-card .icon-wrap {
+                width: 60px;
+                height: 60px;
+                font-size: 26px;
+            }
+        }

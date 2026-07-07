@@ -1,0 +1,361 @@
+<!-- ===============================
+     ENGLISH COURSE SECTION
+================================ -->
+
+<section id="eng-course">
+
+    <div id="eng-course-container">
+
+        <!-- Heading -->
+
+        <div id="eng-course-heading">
+
+            <span>KHÓA HỌC ONLINE</span>
+
+            <h2>Khóa Học Tiếng Anh</h2>
+
+            <p>
+                Lựa chọn khóa học phù hợp với mục tiêu của bạn.
+                Học trực tuyến cùng giảng viên chất lượng.
+            </p>
+
+        </div>
+
+        <!-- Category -->
+
+        <div id="eng-course-filter">
+
+            <button class="active">Tất cả</button>
+
+            <button>Tiếng Anh Giao Tiếp</button>
+
+            <button>IELTS</button>
+
+            <button>TOEIC</button>
+
+            <button>Thiếu Nhi</button>
+
+            <button>Doanh Nghiệp</button>
+
+        </div>
+
+        <!-- Product Grid -->
+
+        <div id="eng-course-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="eng-course-card">
+
+                <div class="eng-course-thumb">
+
+                    <img src="images/course1.jpg" alt="">
+
+                    <span class="badge hot">
+                        HOT
+                    </span>
+
+                </div>
+
+                <div class="eng-course-content">
+
+                    <span class="category">
+                        Tiếng Anh Giao Tiếp
+                    </span>
+
+                    <h3>
+                        Tiếng Anh Giao Tiếp Cho Người Đi Làm
+                    </h3>
+
+                    <p>
+                        Phù hợp cho người mất gốc muốn giao tiếp
+                        tự tin sau 4 tháng.
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+                            👨‍🎓 1.285 học viên
+                        </span>
+
+                        <span>
+                            ⏱ 48 Buổi
+                        </span>
+
+                    </div>
+
+                    <div class="course-rating">
+
+                        ⭐⭐⭐⭐⭐
+
+                        <span>(235 đánh giá)</span>
+
+                    </div>
+
+                    <div class="course-price">
+
+                        <div>
+
+                            <del>4.990.000đ</del>
+
+                            <h4>3.490.000đ</h4>
+
+                        </div>
+
+                        <a href="#">
+                            Xem chi tiết
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="eng-course-card">
+
+                <div class="eng-course-thumb">
+
+                    <img src="images/course2.jpg" alt="">
+
+                    <span class="badge new">
+                        NEW
+                    </span>
+
+                </div>
+
+                <div class="eng-course-content">
+
+                    <span class="category">
+                        IELTS
+                    </span>
+
+                    <h3>
+                        IELTS 6.5+
+                    </h3>
+
+                    <p>
+
+                        Lộ trình từ 0 đến 6.5+
+                        cùng giáo viên IELTS.
+
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+
+                            👨‍🎓 845 học viên
+
+                        </span>
+
+                        <span>
+
+                            ⏱ 60 Buổi
+
+                        </span>
+
+                    </div>
+
+                    <div class="course-rating">
+
+                        ⭐⭐⭐⭐⭐
+
+                        <span>(180 đánh giá)</span>
+
+                    </div>
+
+                    <div class="course-price">
+
+                        <div>
+
+                            <del>8.900.000đ</del>
+
+                            <h4>6.990.000đ</h4>
+
+                        </div>
+
+                        <a href="#">
+                            Xem chi tiết
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="eng-course-card">
+
+                <div class="eng-course-thumb">
+
+                    <img src="images/course3.jpg" alt="">
+
+                    <span class="badge sale">
+
+                        SALE
+
+                    </span>
+
+                </div>
+
+                <div class="eng-course-content">
+
+                    <span class="category">
+
+                        TOEIC
+
+                    </span>
+
+                    <h3>
+
+                        TOEIC 650+
+
+                    </h3>
+
+                    <p>
+
+                        Cam kết đầu ra dành cho sinh viên
+                        và người đi làm.
+
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+
+                            👨‍🎓 1.420 học viên
+
+                        </span>
+
+                        <span>
+
+                            ⏱ 50 Buổi
+
+                        </span>
+
+                    </div>
+
+                    <div class="course-rating">
+
+                        ⭐⭐⭐⭐⭐
+
+                        <span>(420 đánh giá)</span>
+
+                    </div>
+
+                    <div class="course-price">
+
+                        <div>
+
+                            <del>5.990.000đ</del>
+
+                            <h4>4.290.000đ</h4>
+
+                        </div>
+
+                        <a href="#">
+                            Xem chi tiết
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CARD 4 -->
+
+            <div class="eng-course-card">
+
+                <div class="eng-course-thumb">
+
+                    <img src="images/course4.jpg" alt="">
+
+                </div>
+
+                <div class="eng-course-content">
+
+                    <span class="category">
+
+                        Thiếu Nhi
+
+                    </span>
+
+                    <h3>
+
+                        Tiếng Anh Thiếu Nhi
+
+                    </h3>
+
+                    <p>
+
+                        Chương trình chuẩn Cambridge
+                        dành cho trẻ từ 6-12 tuổi.
+
+                    </p>
+
+                    <div class="course-info">
+
+                        <span>
+
+                            👨‍🎓 980 học viên
+
+                        </span>
+
+                        <span>
+
+                            ⏱ 40 Buổi
+
+                        </span>
+
+                    </div>
+
+                    <div class="course-rating">
+
+                        ⭐⭐⭐⭐⭐
+
+                        <span>(152 đánh giá)</span>
+
+                    </div>
+
+                    <div class="course-price">
+
+                        <div>
+
+                            <del>4.500.000đ</del>
+
+                            <h4>3.690.000đ</h4>
+
+                        </div>
+
+                        <a href="#">
+
+                            Xem chi tiết
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,436 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ===== HERO BANNER ===== */
+        .hero {
+            position: relative;
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            padding: 60px 40px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a1f3a 0%, #1A3C6E 60%, #1e4d7a 100%);
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* ===== BÊN TRÁI - 60% ===== */
+        .hero-left {
+            flex: 0 0 60%;
+            max-width: 60%;
+            color: #fff;
+            padding-right: 20px;
+        }
+
+        /* Badge */
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 18px;
+        }
+
+        .hero-badge i {
+            margin-right: 8px;
+            color: #F5A623;
+        }
+
+        /* Title */
+        .hero-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+
+        .hero-title .highlight {
+            color: #F5A623;
+            position: relative;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #F5A623;
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        /* Subtitle */
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            max-width: 520px;
+        }
+
+        .hero-subtitle strong {
+            font-weight: 600;
+            color: #F5A623;
+        }
+
+        /* Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-event {
+            background: #F5A623;
+            color: #1A3C6E;
+        }
+
+        .btn-event:hover {
+            background: #e09515;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 166, 35, 0.4);
+        }
+
+        .btn-trial {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-trial:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Search Box */
+        .hero-search {
+            max-width: 460px;
+            position: relative;
+        }
+
+        .hero-search input {
+            width: 100%;
+            padding: 15px 56px 15px 22px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            color: #1e293b;
+            outline: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .hero-search input::placeholder {
+            color: #94a3b8;
+        }
+
+        .hero-search input:focus {
+            background: #fff;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-search .search-btn {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1A3C6E;
+            color: #fff;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .hero-search .search-btn:hover {
+            background: #F5A623;
+        }
+
+        /* ===== BÊN PHẢI - 40% ===== */
+        .hero-right {
+            flex: 0 0 40%;
+            max-width: 40%;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Video placeholder khi chưa có link */
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a2a4a, #2a4a7a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, #1a2a4a, #3a5a8a);
+        }
+
+        .video-placeholder i {
+            font-size: 64px;
+            color: #F5A623;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover i {
+            transform: scale(1.1);
+        }
+
+        .video-placeholder span {
+            font-size: 14px;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        .video-wrapper .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            background: rgba(245, 166, 35, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #1A3C6E;
+            transition: all 0.3s ease;
+            z-index: 2;
+            box-shadow: 0 8px 30px rgba(245, 166, 35, 0.4);
+        }
+
+        .video-wrapper .play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #F5A623;
+        }
+
+        /* ===== STATS ===== */
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #F5A623;
+        }
+
+        .stat-info {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.75;
+            font-weight: 300;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 50px 30px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+            }
+
+            .hero-left {
+                flex: 0 0 55%;
+                max-width: 55%;
+            }
+
+            .hero-right {
+                flex: 0 0 45%;
+                max-width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+                min-height: auto;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .hero-left {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .hero-right {
+                flex: 0 0 100%;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-search {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .video-wrapper {
+                max-width: 480px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 22px;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+            }
+
+            .btn-hero {
+                padding: 11px 20px;
+                font-size: 13px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                gap: 16px;
+            }
+
+            .stat-item {
+                gap: 6px;
+            }
+
+            .stat-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .stat-number {
+                font-size: 16px;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .video-wrapper .play-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 22px;
+            }
+        }

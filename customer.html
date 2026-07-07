@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard · EngZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f0f7ff;
+            color: #1e293b;
+            line-height: 1.5;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ========== SIDEBAR ========== */
+        .sidebar {
+            width: 270px;
+            background: linear-gradient(180deg, #0b2a4e, #123b66);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px;
+            flex-shrink: 0;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar .logo {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sidebar .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .sidebar .logo span {
+            color: #dc2626;
+        }
+        .sidebar .logo .tagline {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        .sidebar .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 16px;
+            margin-bottom: 28px;
+        }
+
+        .sidebar .user-profile .avatar {
+            width: 48px;
+            height: 48px;
+            background: #dc2626;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar .user-profile .info .name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .sidebar .user-profile .info .role {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        .sidebar .menu {
+            flex: 1;
+        }
+
+        .sidebar .menu .menu-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.4;
+            margin: 16px 0 8px;
+            padding: 0 12px;
+        }
+
+        .sidebar .menu a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: 0.2s;
+            margin-bottom: 2px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .sidebar .menu a:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        .sidebar .menu a.active {
+            background: #dc2626;
+            color: white;
+            font-weight: 600;
+        }
+
+        .sidebar .menu a i {
+            width: 22px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .sidebar .menu a .badge {
+            margin-left: auto;
+            background: #dc2626;
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 10px;
+            border-radius: 60px;
+            font-weight: 600;
+        }
+
+        .sidebar .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: 0.2s;
+            margin-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 20px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .sidebar .logout-btn:hover {
+            color: #dc2626;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 32px 32px;
+            height: 100vh;
+        }
+
+        .main-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .main-content::-webkit-scrollbar-track {
+            background: #eef2f8;
+            border-radius: 60px;
+        }
+        .main-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 60px;
+        }
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* ========== PAGE CONTAINER ========== */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== WELCOME ========== */
+        .welcome-section {
+            background: linear-gradient(135deg, #0b2a4e, #1d4a7a);
+            color: white;
+            padding: 28px 32px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .welcome-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .welcome-section p {
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        .welcome-section .welcome-stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        .welcome-section .welcome-stats .stat {
+            text-align: center;
+        }
+
+        .welcome-section .welcome-stats .stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        .welcome-section .welcome-stats .stat .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* ========== DASHBOARD GRID ========== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f8;
+            transition: 0.2s;
+        }
+
+        .dashboard-card:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .dashboard-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .dashboard-card .card-header h3 {
+            font-size: 1.2rem;
+            color: #0b2a4e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dashboard-card .card-header h3 i {
+            color: #dc2626;
+        }
+
+        .dashboard-card .card-header .view-all {
+            color: #0b2a4e;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .dashboard-card .card-header .view-all:hover {
+            color: #dc2626;
+        }
+
+        .dashboard-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ========== SCROLL ========== */
+        .card-scroll {
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .card-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .card-scroll::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 60px;
+        }
+        .card-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 60px;
+        }
+
+        /* ========== COURSE ITEMS ========== */
+        .course-list .course-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .course-list .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-item .course-icon {
+            width: 48px;
+            height: 48px;
+            background: #eef4ff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0b2a4e;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .course-item .course-info {
+            flex: 1;
+        }
+        .course-item .course-info h4 {
+            font-size: 1rem;
+            color: #0b2a4e;
+            margin-bottom: 2px;
+        }
+        .course-item .course-info .course-meta {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        .course-item .course-info .course-meta i {
+            margin-right: 4px;
+        }
+
+        .course-item .course-status {
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-in-progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-upcoming {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* ========== PROGRESS ========== */
+        .progress-item {
+            margin-bottom: 16px;
+        }
+        .progress-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .progress-item .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .progress-item .progress-header .course-name {
+            font-weight: 600;
+            color: #0b2a4e;
+        }
+        .progress-item .progress-header .percentage {
+            color: #64748b;
+        }
+
+        .progress-item .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eef2f8;
+            border-radius: 60px;
+            overflow: hidden;
+        }
+        .progress-item .progress-bar .fill {
+            height: 100%;
+            border-radius: 60px;
+            transition: width 0.6s ease;
+            background: linear-gradient(90deg, #dc2626, #ef4444);
+        }
+
+        /* ========== GRADES ========== */
+        .grades-list .grade-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .grades-list .grade-item:last-child {
+            border-bottom: none;
+        }
+
+        .grade-item .grade-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .grade-item .grade-info .grade-name {
+            font-weight: 500;
+            color: #0b2a4e;
+        }
+        .grade-item .grade-info .grade-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .grade-item .grade-score {
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 4px 14px;
+            border-radius: 60px;
+        }
+        .grade-score.excellent {
+            color: #166534;
+            background: #dcfce7;
+        }
+        .grade-score.good {
+            color: #1e40af;
+            background: #dbeafe;
+        }
+        .grade-score.average {
+            color: #92400e;
+            background: #fef3c7;
+        }
+        .grade-score.poor {
+            color: #991b1b;
+            background: #fee2e2;
+        }
+
+        /* ========== FEEDBACK ========== */
+        .feedback-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+
+        .feedback-item .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .feedback-item .feedback-header .feedback-course {
+            font-weight: 600;
+            color: #0b2a4e;
+        }
+        .feedback-item .feedback-header .feedback-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+        .feedback-item .feedback-text {
+            color: #475569;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        .feedback-item .feedback-stars {
+            color: #dc2626;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ========== REMINDERS ========== */
+        .reminder-list .reminder-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .reminder-item:last-child {
+            border-bottom: none;
+        }
+
+        .reminder-item .reminder-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .reminder-item .reminder-icon.class {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .reminder-item .reminder-icon.exam {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .reminder-item .reminder-icon.assignment {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .reminder-item .reminder-info {
+            flex: 1;
+        }
+        .reminder-item .reminder-info h4 {
+            font-size: 0.95rem;
+            color: #0b2a4e;
+        }
+        .reminder-item .reminder-info p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        .reminder-item .reminder-time {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* ========== EXAMS ========== */
+        .exam-list .exam-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .exam-item:last-child {
+            border-bottom: none;
+        }
+
+        .exam-item .exam-date {
+            background: #0b2a4e;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 60px;
+        }
+        .exam-item .exam-date .day {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: block;
+        }
+        .exam-item .exam-date .month {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+        .exam-item .exam-date.today {
+            background: #dc2626;
+        }
+        .exam-item .exam-date.soon {
+            background: #f59e0b;
+        }
+
+        .exam-item .exam-info {
+            flex: 1;
+        }
+        .exam-item .exam-info h4 {
+            font-size: 1rem;
+            color: #0b2a4e;
+        }
+        .exam-item .exam-info p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .exam-item .exam-badge {
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .exam-badge.upcoming {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .exam-badge.today {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .exam-badge.soon {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* ========== 2-COLUMN LAYOUT ========== */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* ========== EMPTY STATE ========== */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #dc2626;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            color: #0b2a4e;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 1rem;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-card.full-width {
+                grid-column: 1;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 16px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .sidebar .logo {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+                flex: 1;
+            }
+
+            .sidebar .user-profile {
+                margin-bottom: 0;
+                padding: 8px 12px;
+                flex: 0 0 auto;
+            }
+
+            .sidebar .menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+                width: 100%;
+                order: 3;
+            }
+
+            .sidebar .menu .menu-label {
+                display: none;
+            }
+
+            .sidebar .menu a {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+                flex: 0 0 auto;
+            }
+
+            .sidebar .logout-btn {
+                margin-top: 0;
+                border-top: none;
+                padding: 8px 14px;
+                flex: 0 0 auto;
+            }
+
+            .main-content {
+                padding: 16px;
+                height: auto;
+                overflow: visible;
+            }
+
+            .welcome-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .welcome-section .welcome-stats {
+                gap: 20px;
+            }
+            .welcome-section .welcome-stats .stat .number {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar .logo h1 {
+                font-size: 1.4rem;
+            }
+            .sidebar .user-profile .info .name {
+                font-size: 0.85rem;
+            }
+            .course-item {
+                flex-wrap: wrap;
+            }
+            .course-item .course-status {
+                margin-left: auto;
+            }
+            .grade-item {
+                flex-wrap: wrap;
+            }
+            .grade-item .grade-score {
+                margin-left: auto;
+            }
+            .exam-item {
+                flex-wrap: wrap;
+            }
+            .exam-item .exam-badge {
+                margin-left: auto;
+            }
+            .reminder-item {
+                flex-wrap: wrap;
+            }
+            .reminder-item .reminder-time {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1><img id="logo" style="width: 50%; height: auto;" src="images/logo.png" alt="IVYEDU Logo"><span>IVY</span>EDU</h1>
+            <h1></h1>
+            <div class="tagline">Học tiếng Anh online</div>
+        </div>
+
+        <div class="user-profile">
+            <div class="avatar">M</div>
+            <div class="info">
+                <div class="name">Minh Anh</div>
+                <div class="role">👨‍👩‍👦 Phụ huynh</div>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <div class="menu-label">Điều hướng</div>
+            <a class="active" data-page="dashboard"><i class="fas fa-th-large"></i> Tổng quan</a>
+            <a data-page="courses"><i class="fas fa-book-open"></i> Khóa học <span class="badge">3</span></a>
+            <a data-page="progress"><i class="fas fa-chart-line"></i> Tiến trình</a>
+            <a data-page="grades"><i class="fas fa-star"></i> Điểm số</a>
+
+            <div class="menu-label" style="margin-top: 12px;">Hỗ trợ</div>
+            <a data-page="schedule"><i class="fas fa-calendar-check"></i> Lịch học</a>
+            <a data-page="exams"><i class="fas fa-pencil-alt"></i> Lịch thi</a>
+            <a data-page="messages"><i class="fas fa-comment-dots"></i> Nhắn tin</a>
+        </nav>
+
+        <a class="logout-btn"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main-content">
+
+        <!-- ===== PAGE: DASHBOARD ===== -->
+        <div id="page-dashboard" class="page active">
+            <!-- WELCOME -->
+            <div class="welcome-section">
+                <div>
+                    <h2>👋 Chào mừng Minh Anh!</h2>
+                    <p>Theo dõi tiến độ học tập của bé Minh tại đây</p>
+                </div>
+                <div class="welcome-stats">
+                    <div class="stat">
+                        <div class="number">3</div>
+                        <div class="label">Khóa học</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">68%</div>
+                        <div class="label">Hoàn thành</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">8.5</div>
+                        <div class="label">Điểm TB</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <!-- 1. KHÓA HỌC ĐÃ ĐĂNG KÝ -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book-open"></i> Khóa học đã đăng ký</h3>
+                        <a href="#" class="view-all" onclick="switchPage('courses')">Xem tất cả →</a>
+                    </div>
+                    <div class="course-list card-scroll">
+                        <div class="course-item">
+                            <div class="course-icon"><i class="fas fa-pencil-alt"></i></div>
+                            <div class="course-info">
+                                <h4>Flyers</h4>
+                                <div class="course-meta"><i class="fas fa-user"></i> Cô Sarah · <i class="fas fa-clock"></i> Thứ 2,4,6</div>
+                            </div>
+                            <span class="course-status status-in-progress">Đang học</span>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="course-info">
+                                <h4>Foundation A</h4>
+                                <div class="course-meta"><i class="fas fa-user"></i> Cô Lisa · <i class="fas fa-clock"></i> Thứ 3,5,7</div>
+                            </div>
+                            <span class="course-status status-in-progress">Đang học</span>
+                        </div>
+                        <div class="course-item">
+                            <div class="course-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="course-info">
+                                <h4>Movers</h4>
+                                <div class="course-meta"><i class="fas fa-user"></i> Cô Sarah · <i class="fas fa-clock"></i> Thứ 2,4,6</div>
+                            </div>
+                            <span class="course-status status-completed">✅ Hoàn thành</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. TIẾN TRÌNH HỌC TẬP -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Tiến trình học tập</h3>
+                        <a href="#" class="view-all" onclick="switchPage('progress')">Chi tiết →</a>
+                    </div>
+                    <div class="card-scroll">
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="course-name">Flyers</span>
+                                <span class="percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="course-name">Foundation A</span>
+                                <span class="percentage">45%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 45%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-header">
+                                <span class="course-name">Movers</span>
+                                <span class="percentage">100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="fill" style="width: 100%; background: linear-gradient(90deg, #22c55e, #16a34a);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. ĐIỂM SỐ & ĐÁNH GIÁ -->
+                <div class="dashboard-card full-width">
+                    <div class="card-header">
+                        <h3><i class="fas fa-star"></i> Điểm số & đánh giá</h3>
+                        <a href="#" class="view-all" onclick="switchPage('grades')">Xem bảng điểm →</a>
+                    </div>
+                    <div class="two-col">
+                        <div>
+                            <h4 style="color: #0b2a4e; margin-bottom: 12px; font-size: 1rem;">📊 Bảng điểm</h4>
+                            <div class="grades-list">
+                                <div class="grade-item">
+                                    <div class="grade-info">
+                                        <span class="grade-name">Flyers - Bài kiểm tra 1</span>
+                                        <span class="grade-date">10/06/2026</span>
+                                    </div>
+                                    <span class="grade-score excellent">9.0</span>
+                                </div>
+                                <div class="grade-item">
+                                    <div class="grade-info">
+                                        <span class="grade-name">Flyers - Bài kiểm tra 2</span>
+                                        <span class="grade-date">24/06/2026</span>
+                                    </div>
+                                    <span class="grade-score good">8.5</span>
+                                </div>
+                                <div class="grade-item">
+                                    <div class="grade-info">
+                                        <span class="grade-name">Foundation A - Bài tập</span>
+                                        <span class="grade-date">15/06/2026</span>
+                                    </div>
+                                    <span class="grade-score average">7.0</span>
+                                </div>
+                                <div class="grade-item">
+                                    <div class="grade-info">
+                                        <span class="grade-name">Movers - Thi cuối kỳ</span>
+                                        <span class="grade-date">30/05/2026</span>
+                                    </div>
+                                    <span class="grade-score excellent">9.5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: #0b2a4e; margin-bottom: 12px; font-size: 1rem;">💬 Đánh giá của giáo viên</h4>
+                            <div class="card-scroll" style="max-height: 200px;">
+                                <div class="feedback-item">
+                                    <div class="feedback-header">
+                                        <span class="feedback-course">Flyers · Cô Sarah</span>
+                                        <span class="feedback-date">24/06/2026</span>
+                                    </div>
+                                    <div class="feedback-stars">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="feedback-text">"Minh tiến bộ rất tốt trong kỹ năng giao tiếp."</div>
+                                </div>
+                                <div class="feedback-item">
+                                    <div class="feedback-header">
+                                        <span class="feedback-course">Foundation A · Cô Lisa</span>
+                                        <span class="feedback-date">20/06/2026</span>
+                                    </div>
+                                    <div class="feedback-stars">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="feedback-text">"Minh học rất chăm chỉ, nắm vững ngữ pháp cơ bản."</div>
+                                </div>
+                                <div class="feedback-item">
+                                    <div class="feedback-header">
+                                        <span class="feedback-course">Movers · Cô Sarah</span>
+                                        <span class="feedback-date">30/05/2026</span>
+                                    </div>
+                                    <div class="feedback-stars">
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="feedback-text">"Xuất sắc! Minh đã hoàn thành khóa học với kết quả rất tốt."</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. NHẮC NHỞ LỊCH HỌC -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-check"></i> Lịch học sắp tới</h3>
+                        <a href="#" class="view-all" onclick="switchPage('schedule')">Xem lịch →</a>
+                    </div>
+                    <div class="reminder-list card-scroll">
+                        <div class="reminder-item">
+                            <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div class="reminder-info">
+                                <h4>Flyers - Buổi 25</h4>
+                                <p><i class="fas fa-clock"></i> Thứ 2, 04/07 · 18:30 - 19:30</p>
+                            </div>
+                            <span class="reminder-time">Còn 2 ngày</span>
+                        </div>
+                        <div class="reminder-item">
+                            <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div class="reminder-info">
+                                <h4>Foundation A - Buổi 18</h4>
+                                <p><i class="fas fa-clock"></i> Thứ 3, 05/07 · 19:00 - 20:00</p>
+                            </div>
+                            <span class="reminder-time">Còn 3 ngày</span>
+                        </div>
+                        <div class="reminder-item">
+                            <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div class="reminder-info">
+                                <h4>Flyers - Buổi 26</h4>
+                                <p><i class="fas fa-clock"></i> Thứ 4, 06/07 · 18:30 - 19:30</p>
+                            </div>
+                            <span class="reminder-time">Còn 4 ngày</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. NHẮC THI -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-pencil-alt"></i> Lịch thi & kiểm tra</h3>
+                        <a href="#" class="view-all" onclick="switchPage('exams')">Xem tất cả →</a>
+                    </div>
+                    <div class="exam-list card-scroll">
+                        <div class="exam-item">
+                            <div class="exam-date soon">
+                                <span class="day">10</span>
+                                <span class="month">THG 7</span>
+                            </div>
+                            <div class="exam-info">
+                                <h4>Flyers - Kiểm tra giữa kỳ</h4>
+                                <p><i class="fas fa-clock"></i> 10/07 · 18:30 - 19:30</p>
+                            </div>
+                            <span class="exam-badge upcoming">🔔 Sắp tới</span>
+                        </div>
+                        <div class="exam-item">
+                            <div class="exam-date today">
+                                <span class="day">02</span>
+                                <span class="month">THG 7</span>
+                            </div>
+                            <div class="exam-info">
+                                <h4>Foundation A - Bài kiểm tra</h4>
+                                <p><i class="fas fa-clock"></i> 02/07 · 19:00 - 20:00</p>
+                            </div>
+                            <span class="exam-badge today">🔴 Hôm nay</span>
+                        </div>
+                        <div class="exam-item">
+                            <div class="exam-date">
+                                <span class="day">20</span>
+                                <span class="month">THG 7</span>
+                            </div>
+                            <div class="exam-info">
+                                <h4>Flyers - Thi cuối kỳ</h4>
+                                <p><i class="fas fa-clock"></i> 20/07 · 18:30 - 20:00</p>
+                            </div>
+                            <span class="exam-badge soon">⚠️ Còn 2 tuần</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== PAGE: COURSES ===== -->
+        <div id="page-courses" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-book-open"></i> Tất cả khóa học đã đăng ký</h3>
+                    <span style="font-size: 0.9rem; color: #64748b;">3 khóa học</span>
+                </div>
+                <div class="course-list">
+                    <div class="course-item">
+                        <div class="course-icon"><i class="fas fa-pencil-alt"></i></div>
+                        <div class="course-info">
+                            <h4>Flyers</h4>
+                            <div class="course-meta"><i class="fas fa-user"></i> Cô Sarah · <i class="fas fa-clock"></i> Thứ 2,4,6 · 18:30 - 19:30</div>
+                        </div>
+                        <span class="course-status status-in-progress">Đang học</span>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="course-info">
+                            <h4>Foundation A</h4>
+                            <div class="course-meta"><i class="fas fa-user"></i> Cô Lisa · <i class="fas fa-clock"></i> Thứ 3,5,7 · 19:00 - 20:00</div>
+                        </div>
+                        <span class="course-status status-in-progress">Đang học</span>
+                    </div>
+                    <div class="course-item">
+                        <div class="course-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="course-info">
+                            <h4>Movers</h4>
+                            <div class="course-meta"><i class="fas fa-user"></i> Cô Sarah · <i class="fas fa-clock"></i> Thứ 2,4,6 · 17:30 - 18:30</div>
+                            <div style="font-size: 0.8rem; color: #166534; margin-top: 2px;">✅ Đã hoàn thành: 30/05/2026</div>
+                        </div>
+                        <span class="course-status status-completed">Hoàn thành</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: PROGRESS ===== -->
+        <div id="page-progress" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-line"></i> Tiến trình chi tiết</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="course-name" style="font-size: 1.1rem;">Flyers</span>
+                            <span class="percentage" style="font-size: 1.1rem;">75%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 12px;">
+                            <div class="fill" style="width: 75%;"></div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.9rem; color: #64748b;">
+                            <i class="fas fa-check-circle" style="color: #dc2626;"></i> 18/24 buổi đã hoàn thành
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="course-name" style="font-size: 1.1rem;">Foundation A</span>
+                            <span class="percentage" style="font-size: 1.1rem;">45%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 12px;">
+                            <div class="fill" style="width: 45%;"></div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.9rem; color: #64748b;">
+                            <i class="fas fa-check-circle" style="color: #dc2626;"></i> 18/40 buổi đã hoàn thành
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="course-name" style="font-size: 1.1rem;">Movers</span>
+                            <span class="percentage" style="font-size: 1.1rem;">100%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 12px;">
+                            <div class="fill" style="width: 100%; background: linear-gradient(90deg, #22c55e, #16a34a);"></div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.9rem; color: #166534;">
+                            <i class="fas fa-check-circle" style="color: #22c55e;"></i> ✅ Đã hoàn thành 36/36 buổi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: GRADES ===== -->
+        <div id="page-grades" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-star"></i> Bảng điểm chi tiết</h3>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f1f5f9; border-radius: 12px;">
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #0b2a4e;">Khóa học</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #0b2a4e;">Bài kiểm tra</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #0b2a4e;">Ngày</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #0b2a4e;">Điểm</th>
+                                <th style="padding: 12px 16px; text-align: left; font-weight: 600; color: #0b2a4e;">Xếp loại</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 12px 16px;"><strong>Flyers</strong></td>
+                                <td style="padding: 12px 16px;">Bài kiểm tra 1</td>
+                                <td style="padding: 12px 16px; color: #64748b;">10/06/2026</td>
+                                <td style="padding: 12px 16px; font-weight: 700; color: #166534;">9.0</td>
+                                <td style="padding: 12px 16px;"><span class="grade-score excellent">Xuất sắc</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 12px 16px;"><strong>Flyers</strong></td>
+                                <td style="padding: 12px 16px;">Bài kiểm tra 2</td>
+                                <td style="padding: 12px 16px; color: #64748b;">24/06/2026</td>
+                                <td style="padding: 12px 16px; font-weight: 700; color: #1e40af;">8.5</td>
+                                <td style="padding: 12px 16px;"><span class="grade-score good">Tốt</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f1f5f9;">
+                                <td style="padding: 12px 16px;"><strong>Foundation A</strong></td>
+                                <td style="padding: 12px 16px;">Bài tập</td>
+                                <td style="padding: 12px 16px; color: #64748b;">15/06/2026</td>
+                                <td style="padding: 12px 16px; font-weight: 700; color: #92400e;">7.0</td>
+                                <td style="padding: 12px 16px;"><span class="grade-score average">Trung bình</span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 16px;"><strong>Movers</strong></td>
+                                <td style="padding: 12px 16px;">Thi cuối kỳ</td>
+                                <td style="padding: 12px 16px; color: #64748b;">30/05/2026</td>
+                                <td style="padding: 12px 16px; font-weight: 700; color: #166534;">9.5</td>
+                                <td style="padding: 12px 16px;"><span class="grade-score excellent">Xuất sắc</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: SCHEDULE ===== -->
+        <div id="page-schedule" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-calendar-check"></i> Lịch học chi tiết</h3>
+                </div>
+                <div class="reminder-list">
+                    <div class="reminder-item">
+                        <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="reminder-info">
+                            <h4>Flyers - Buổi 25</h4>
+                            <p><i class="fas fa-calendar"></i> Thứ 2, 04/07/2026 · 18:30 - 19:30</p>
+                            <p><i class="fas fa-user"></i> Cô Sarah · Phòng học: Zoom A</p>
+                        </div>
+                        <span class="reminder-time" style="color: #dc2626; font-weight: 600;">Còn 2 ngày</span>
+                    </div>
+                    <div class="reminder-item">
+                        <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="reminder-info">
+                            <h4>Foundation A - Buổi 18</h4>
+                            <p><i class="fas fa-calendar"></i> Thứ 3, 05/07/2026 · 19:00 - 20:00</p>
+                            <p><i class="fas fa-user"></i> Cô Lisa · Phòng học: Zoom B</p>
+                        </div>
+                        <span class="reminder-time" style="color: #dc2626; font-weight: 600;">Còn 3 ngày</span>
+                    </div>
+                    <div class="reminder-item">
+                        <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="reminder-info">
+                            <h4>Flyers - Buổi 26</h4>
+                            <p><i class="fas fa-calendar"></i> Thứ 4, 06/07/2026 · 18:30 - 19:30</p>
+                            <p><i class="fas fa-user"></i> Cô Sarah · Phòng học: Zoom A</p>
+                        </div>
+                        <span class="reminder-time" style="color: #64748b;">Còn 4 ngày</span>
+                    </div>
+                    <div class="reminder-item">
+                        <div class="reminder-icon class"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div class="reminder-info">
+                            <h4>Foundation A - Buổi 19</h4>
+                            <p><i class="fas fa-calendar"></i> Thứ 5, 07/07/2026 · 19:00 - 20:00</p>
+                            <p><i class="fas fa-user"></i> Cô Lisa · Phòng học: Zoom B</p>
+                        </div>
+                        <span class="reminder-time" style="color: #64748b;">Còn 5 ngày</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: EXAMS ===== -->
+        <div id="page-exams" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-pencil-alt"></i> Lịch thi & kiểm tra</h3>
+                </div>
+                <div class="exam-list">
+                    <div class="exam-item">
+                        <div class="exam-date today">
+                            <span class="day">02</span>
+                            <span class="month">THG 7</span>
+                        </div>
+                        <div class="exam-info">
+                            <h4>Foundation A - Bài kiểm tra</h4>
+                            <p><i class="fas fa-clock"></i> 02/07/2026 · 19:00 - 20:00</p>
+                            <p><i class="fas fa-user"></i> Cô Lisa · Phòng học: Zoom B</p>
+                        </div>
+                        <span class="exam-badge today">🔴 Hôm nay</span>
+                    </div>
+                    <div class="exam-item">
+                        <div class="exam-date soon">
+                            <span class="day">10</span>
+                            <span class="month">THG 7</span>
+                        </div>
+                        <div class="exam-info">
+                            <h4>Flyers - Kiểm tra giữa kỳ</h4>
+                            <p><i class="fas fa-clock"></i> 10/07/2026 · 18:30 - 19:30</p>
+                            <p><i class="fas fa-user"></i> Cô Sarah · Phòng học: Zoom A</p>
+                        </div>
+                        <span class="exam-badge upcoming">🔔 Sắp tới</span>
+                    </div>
+                    <div class="exam-item">
+                        <div class="exam-date">
+                            <span class="day">20</span>
+                            <span class="month">THG 7</span>
+                        </div>
+                        <div class="exam-info">
+                            <h4>Flyers - Thi cuối kỳ</h4>
+                            <p><i class="fas fa-clock"></i> 20/07/2026 · 18:30 - 20:00</p>
+                            <p><i class="fas fa-user"></i> Cô Sarah · Phòng học: Zoom A</p>
+                        </div>
+                        <span class="exam-badge soon">⚠️ Còn 2 tuần</span>
+                    </div>
+                    <div class="exam-item">
+                        <div class="exam-date">
+                            <span class="day">25</span>
+                            <span class="month">THG 7</span>
+                        </div>
+                        <div class="exam-info">
+                            <h4>Foundation A - Thi cuối kỳ</h4>
+                            <p><i class="fas fa-clock"></i> 25/07/2026 · 19:00 - 20:30</p>
+                            <p><i class="fas fa-user"></i> Cô Lisa · Phòng học: Zoom B</p>
+                        </div>
+                        <span class="exam-badge upcoming">🔔 Còn 3 tuần</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: MESSAGES ===== -->
+        <div id="page-messages" class="page">
+            <div class="dashboard-card" style="padding: 32px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-comment-dots"></i> Tin nhắn</h3>
+                    <span style="font-size: 0.9rem; color: #dc2626; font-weight: 600;">2 tin nhắn mới</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div style="background: #f8fcff; border-radius: 16px; padding: 20px; border: 1px solid #eef2f8;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <div style="width: 44px; height: 44px; background: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">S</div>
+                            <div>
+                                <div style="font-weight: 600; color: #0b2a4e;">Cô Sarah</div>
+                                <div style="font-size: 0.8rem; color: #94a3b8;">Flyers · 10:30</div>
+                            </div>
+                            <span style="margin-left: auto; background: #dc2626; color: white; font-size: 0.7rem; padding: 2px 10px; border-radius: 60px;">Mới</span>
+                        </div>
+                        <div style="color: #475569; font-size: 0.95rem; font-style: italic;">"Minh đã làm bài rất tốt tuần này. Cháu tiến bộ vượt bậc!"</div>
+                    </div>
+                    <div style="background: #f8fcff; border-radius: 16px; padding: 20px; border: 1px solid #eef2f8;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <div style="width: 44px; height: 44px; background: #0b2a4e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">L</div>
+                            <div>
+                                <div style="font-weight: 600; color: #0b2a4e;">Cô Lisa</div>
+                                <div style="font-size: 0.8rem; color: #94a3b8;">Foundation A · 09:15</div>
+                            </div>
+                            <span style="margin-left: auto; background: #dc2626; color: white; font-size: 0.7rem; padding: 2px 10px; border-radius: 60px;">Mới</span>
+                        </div>
+                        <div style="color: #475569; font-size: 0.95rem; font-style: italic;">"Nhắc bé Minh ôn tập bài cũ trước buổi học ngày mai nhé."</div>
+                    </div>
+                    <div style="background: #f8fcff; border-radius: 16px; padding: 20px; border: 1px solid #eef2f8;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <div style="width: 44px; height: 44px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">H</div>
+                            <div>
+                                <div style="font-weight: 600; color: #0b2a4e;">Hệ thống</div>
+                                <div style="font-size: 0.8rem; color: #94a3b8;">02/07/2026 · 08:00</div>
+                            </div>
+                        </div>
+                        <div style="color: #475569; font-size: 0.95rem;">📢 Nhắc nhở: Lịch học hôm nay lúc 19:00 - Foundation A (Buổi 18)</div>
+                    </div>
+                    <div style="background: #f8fcff; border-radius: 16px; padding: 20px; border: 1px solid #eef2f8;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <div style="width: 44px; height: 44px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">T</div>
+                            <div>
+                                <div style="font-weight: 600; color: #0b2a4e;">Trung tâm</div>
+                                <div style="font-size: 0.8rem; color: #94a3b8;">30/06/2026 · 16:00</div>
+                            </div>
+                        </div>
+                        <div style="color: #475569; font-size: 0.95rem;">📣 Thông báo: Lịch nghỉ hè từ 01/08/2026 đến 15/08/2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ========== JAVASCRIPT: MENU NAVIGATION ========== -->
+    <script>
+        function switchPage(pageId) {
+            // Ẩn tất cả các page
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Hiển thị page được chọn
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Cập nhật active menu
+            document.querySelectorAll('.sidebar .menu a').forEach(menuItem => {
+                menuItem.classList.remove('active');
+                if (menuItem.dataset.page === pageId) {
+                    menuItem.classList.add('active');
+                }
+            });
+
+            // Scroll lên đầu
+            document.querySelector('.main-content').scrollTop = 0;
+        }
+
+        // Gắn sự kiện click cho tất cả menu items
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.sidebar .menu a').forEach(menuItem => {
+                menuItem.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    if (pageId) {
+                        switchPage(pageId);
+                    }
+                });
+            });
+
+            // Nút "Xem tất cả" trong các card
+            document.querySelectorAll('.view-all').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Nếu có onclick thì không override
+                });
+            });
+
+            // Nút logout
+            document.querySelector('.logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                    alert('Đã đăng xuất!');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        /* ====== CHUNG ====== */
+        .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            color: #1A3C6E;
+            margin-bottom: 12px;
+        }
+
+        .section-title .highlight {
+            color: #F5A623;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* ============================================= */
+        /* ===== SECTION 1: 3 KÊNH PHỤC VỤ ===== */
+        /* ============================================= */
+        .channels {
+            background: #fff;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .channel-card {
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 32px 28px;
+            border: 1px solid #e9edf4;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #1A3C6E;
+            transition: all 0.3s ease;
+        }
+
+        .channel-card:nth-child(2)::before {
+            background: #F5A623;
+        }
+
+        .channel-card:nth-child(3)::before {
+            background: #2ecc71;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(26, 60, 110, 0.10);
+        }
+
+        .channel-card .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .channel-card:nth-child(1) .icon {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+
+        .channel-card:nth-child(2) .icon {
+            background: linear-gradient(135deg, #F5A623, #e09515);
+        }
+
+        .channel-card:nth-child(3) .icon {
+            background: linear-gradient(135deg, #2ecc71, #1ea85a);
+        }
+
+        .channel-card h3 {
+            font-size: 22px;
+            color: #1A3C6E;
+            margin-bottom: 14px;
+        }
+
+        .channel-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .channel-card ul li {
+            padding: 6px 0;
+            color: #475569;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #f0f2f6;
+        }
+
+        .channel-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .channel-card ul li i {
+            color: #F5A623;
+            font-size: 12px;
+        }
+
+        .channel-card .btn-channel {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+
+        .channel-card:nth-child(1) .btn-channel {
+            background: #1A3C6E;
+            color: #fff;
+        }
+
+        .channel-card:nth-child(1) .btn-channel:hover {
+            background: #0f2b4f;
+            transform: translateX(4px);
+        }
+
+        .channel-card:nth-child(2) .btn-channel {
+            background: #F5A623;
+            color: #1A3C6E;
+        }
+
+        .channel-card:nth-child(2) .btn-channel:hover {
+            background: #e09515;
+            transform: translateX(4px);
+        }
+
+        .channel-card:nth-child(3) .btn-channel {
+            background: #2ecc71;
+            color: #fff;
+        }
+
+        .channel-card:nth-child(3) .btn-channel:hover {
+            background: #1ea85a;
+            transform: translateX(4px);
+        }
+
+        /* ============================================= */
+        /* ===== SECTION 2: QUY TRÌNH TƯ VẤN ===== */
+        /* ============================================= */
+        .process {
+            background: #f8faff;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .process-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 28px 30px;
+            text-align: center;
+            border: 1px solid #e9edf4;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(26, 60, 110, 0.10);
+        }
+
+        /* Số thứ tự */
+        .process-card .step-number {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32px;
+            height: 32px;
+            background: #1A3C6E;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .process-card:nth-child(2) .step-number {
+            background: #F5A623;
+        }
+
+        .process-card:nth-child(3) .step-number {
+            background: #2ecc71;
+        }
+
+        .process-card .icon-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 36px;
+            color: #fff;
+        }
+
+        .process-card:nth-child(1) .icon-wrap {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+
+        .process-card:nth-child(2) .icon-wrap {
+            background: linear-gradient(135deg, #F5A623, #e09515);
+        }
+
+        .process-card:nth-child(3) .icon-wrap {
+            background: linear-gradient(135deg, #2ecc71, #1ea85a);
+        }
+
+        .process-card h4 {
+            font-size: 20px;
+            color: #1A3C6E;
+            margin-bottom: 4px;
+        }
+
+        .process-card .level {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .process-card .desc {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 1024px) {
+            .section-container {
+                padding: 40px 24px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .channels-grid {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+                margin: 0 auto;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .channel-card {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 30px 16px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .channel-card h3 {
+                font-size: 19px;
+            }
+
+            .process-card {
+                padding: 28px 20px 24px;
+            }
+
+            .process-card .icon-wrap {
+                width: 64px;
+                height: 64px;
+                font-size: 28px;
+            }
+        }

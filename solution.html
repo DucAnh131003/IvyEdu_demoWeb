@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải pháp cho nhà trường | IvyEdu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0056A7;
+            --primary-blue-dark: #004A8F;
+            --primary-teal: #00B4A0;
+            --primary-teal-light: #E6F7F5;
+            --primary-gradient: linear-gradient(135deg, #0056A7 0%, #00B4A0 100%);
+            --primary-gradient-hover: linear-gradient(135deg, #004A8F 0%, #009B8D 100%);
+            --text-dark: #1a1a2e;
+            --text-gray: #6b7280;
+            --bg-light: #f8fafc;
+            --shadow: 0 10px 40px rgba(0, 86, 167, 0.12);
+            --shadow-hover: 0 20px 60px rgba(0, 86, 167, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .contact-nav-btn {
+            padding: 10px 24px;
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 167, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 140px 40px 80px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f7f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(0, 180, 160, 0.08);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(0, 86, 167, 0.05);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero-text h1 span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 14px 36px;
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 86, 167, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 14px 36px;
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-illustration {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-illustration i {
+            font-size: 80px;
+            opacity: 0.2;
+            position: absolute;
+        }
+
+        .hero-illustration .icon-1 {
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+        }
+        .hero-illustration .icon-2 {
+            bottom: 20px;
+            right: 20px;
+            font-size: 50px;
+        }
+        .hero-illustration .icon-3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            opacity: 0.15;
+        }
+
+        .hero-illustration-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-illustration-content h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .hero-illustration-content p {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 17px;
+        }
+
+        /* SOLUTIONS SECTION */
+        .solutions {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .solution-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(0, 180, 160, 0.2);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+        }
+
+        .solution-icon.ai {
+            background: linear-gradient(135deg, #0056A7, #4a9eff);
+        }
+        .solution-icon.robocon {
+            background: linear-gradient(135deg, #00B4A0, #00d4c0);
+        }
+        .solution-icon.online {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+        .solution-icon.lms {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+        }
+        .solution-icon.iot {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+        }
+        .solution-icon.analytics {
+            background: linear-gradient(135deg, #06b6d4, #22d3ee);
+        }
+
+        .solution-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .solution-card p {
+            color: var(--text-gray);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .solution-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .solution-tag {
+            padding: 4px 14px;
+            background: var(--bg-light);
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .solution-card .learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 16px;
+            transition: gap 0.3s;
+        }
+
+        .solution-card .learn-more:hover {
+            gap: 12px;
+        }
+
+        /* FEATURES / BENEFITS SECTION */
+        .features {
+            padding: 80px 40px;
+            background: var(--bg-light);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 32px 24px;
+            background: #fff;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-item .icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card .stars {
+            color: #f59e0b;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-author .avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .testimonial-author .info {
+            font-size: 14px;
+        }
+
+        .testimonial-author .info strong {
+            display: block;
+            font-weight: 600;
+        }
+
+        .testimonial-author .info span {
+            color: var(--text-gray);
+            font-size: 13px;
+        }
+
+        /* CTA SECTION */
+        .cta {
+            padding: 80px 40px;
+            background: var(--primary-gradient);
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            font-size: 17px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .cta .btn-primary {
+            background: #fff;
+            color: var(--primary-blue);
+            box-shadow: none;
+        }
+
+        .cta .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta .btn-secondary {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .cta .btn-secondary:hover {
+            background: #fff;
+            color: var(--primary-blue);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+  :root{
+    --navy: #1F295F;
+    --navy-dark: #16204a;
+    --red: #B12637;
+    --text-light: #E8EAF2;
+    --text-muted: #B7BEDA;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#fff;
+  }
+
+  .footer{
+    background: var(--navy);
+    color: var(--text-light);
+    padding: 40px 24px 20px;
+  }
+
+  .footer__grid{
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1fr 1.3fr 1fr;
+    gap: 24px;
+  }
+
+  .footer__col h4{
+    margin: 0 0 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .footer__col ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__col ul li{
+    margin-bottom: 8px;
+  }
+
+  .footer__col ul li a{
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color .2s ease;
+  }
+
+  .footer__col ul li a:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__map-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer__map{
+    width: 100%;
+    aspect-ratio: 16/10;
+    border: 0;
+    border-radius: 6px;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .footer__map-link{
+    align-self: flex-end;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .footer__map-link:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__bottom{
+    max-width: 1140px;
+    margin: 32px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .footer__bottom p{
+    margin: 0 0 6px;
+  }
+
+  .footer__bottom a{
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer__bottom a:hover{
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px){
+    .footer__grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px){
+    .footer__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+        /* CHATBOX FLOATING (giữ nguyên từ trước) */
+        #contact-wrapper {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .contact-toggle-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            color: #fff;
+            border: none;
+            box-shadow: 0 6px 25px rgba(0, 86, 167, 0.3);
+            font-size: 28px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-toggle-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 35px rgba(0, 86, 167, 0.5);
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 3px solid #00B4A0;
+            animation: pulse 2s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .contact-panel {
+            width: 380px;
+            max-width: 92vw;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            margin-bottom: 16px;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .contact-panel.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .panel-header {
+            background: var(--primary-gradient);
+            color: #fff;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .company-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            background: #fff;
+            padding: 3px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .sub-text {
+            font-size: 12px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .panel-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(4px);
+        }
+
+        .panel-close-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: rotate(90deg);
+        }
+
+        .panel-body {
+            padding: 24px;
+            background: var(--bg-light);
+        }
+
+        .company-intro {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .company-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .company-name i {
+            color: var(--primary-teal);
+        }
+
+        .company-slogan {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-top: 4px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary-teal), var(--primary-blue), transparent);
+            margin: 16px 0 20px 0;
+            opacity: 0.3;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            background: #fff;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .contact-item:hover {
+            transform: translateX(6px);
+            border-color: var(--primary-teal);
+            box-shadow: 0 4px 16px rgba(0, 180, 160, 0.15);
+        }
+
+        .icon-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover .icon-wrapper {
+            transform: scale(1.05);
+        }
+
+        .icon-wrapper.phone {
+            background: linear-gradient(135deg, #0056A7, #0084ff);
+        }
+        .icon-wrapper.email {
+            background: linear-gradient(135deg, #00B4A0, #00d4c0);
+        }
+        .icon-wrapper.facebook {
+            background: linear-gradient(135deg, #1877f2, #3b82f6);
+        }
+        .icon-wrapper.zalo {
+            background: linear-gradient(135deg, #0068FF, #4a9eff);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-content a {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-content a:hover {
+            color: var(--primary-blue);
+        }
+
+        .panel-footer {
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .panel-footer span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 32px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .solutions {
+                padding: 60px 20px;
+            }
+
+            .features {
+                padding: 60px 20px;
+            }
+
+            .testimonials {
+                padding: 60px 20px;
+            }
+
+            .cta {
+                padding: 60px 20px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #contact-wrapper {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .contact-panel {
+                width: 94vw;
+                border-radius: 16px;
+            }
+
+            .contact-toggle-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 24px;
+            }
+
+            .panel-header {
+                padding: 14px 16px;
+            }
+
+            .company-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .panel-body {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="index.html" class="logo-container">
+            <img src="logocongty.webp" alt="IvyEdu">
+            <span class="logo-text">IvyEdu</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="#solutions">Giải pháp</a></li>
+            <li><a href="#features">Tính năng</a></li>
+            <li><a href="#testimonials">Đánh giá</a></li>
+        </ul>
+        <button class="contact-nav-btn" onclick="document.getElementById('contact-toggle').click()">
+            <i class="fas fa-headset"></i> Liên hệ
+        </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Giải pháp <span>giáo dục 4.0</span> cho nhà trường</h1>
+                <p>Nền tảng học tập tích hợp AI, Robotics và Công nghệ số giúp nâng cao chất lượng đào tạo và trải nghiệm học tập.</p>
+                <div class="hero-buttons">
+                    <a href="#solutions" class="btn-primary">
+                        <i class="fas fa-rocket"></i> Khám phá ngay
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        <i class="fas fa-play"></i> Xem demo
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Trường học</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Học sinh</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Hài lòng</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-illustration">
+                    <i class="fas fa-robot icon-1"></i>
+                    <i class="fas fa-brain icon-2"></i>
+                    <i class="fas fa-graduation-cap icon-3"></i>
+                    <div class="hero-illustration-content">
+                        <h3><i class="fas fa-graduation-cap"></i> IvyEdu</h3>
+                        <p>Avenue with Multiple Values</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="solutions" id="solutions">
+        <div class="section-title">
+            <h2>Giải pháp <span>công nghệ</span> toàn diện</h2>
+            <p>Các giải pháp tiên tiến giúp nhà trường chuyển đổi số và nâng cao chất lượng giáo dục</p>
+        </div>
+        <div class="solutions-grid">
+            <!-- 1. AI tích hợp -->
+            <div class="solution-card">
+                <div class="solution-icon ai"><i class="fas fa-brain"></i></div>
+                <h3>Học tập tích hợp AI</h3>
+                <p>Trí tuệ nhân tạo cá nhân hóa lộ trình học tập, phân tích điểm mạnh/yếu và đề xuất nội dung phù hợp cho từng học sinh.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">AI</span>
+                    <span class="solution-tag">Cá nhân hóa</span>
+                    <span class="solution-tag">Phân tích dữ liệu</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 2. Robocon -->
+            <div class="solution-card">
+                <div class="solution-icon robocon"><i class="fas fa-robot"></i></div>
+                <h3>Robocon & STEM</h3>
+                <p>Chương trình đào tạo Robotics và STEM với các bộ dụng cụ lắp ráp, lập trình robot, tham gia các cuộc thi Robocon trong nước và quốc tế.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">Robotics</span>
+                    <span class="solution-tag">STEM</span>
+                    <span class="solution-tag">Lập trình</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 3. Khóa học online -->
+            <div class="solution-card">
+                <div class="solution-icon online"><i class="fas fa-laptop"></i></div>
+                <h3>Khóa học online</h3>
+                <p>Hệ thống khóa học trực tuyến đa dạng với video bài giảng chất lượng cao, bài tập tương tác và kiểm tra đánh giá năng lực.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">E-learning</span>
+                    <span class="solution-tag">Video bài giảng</span>
+                    <span class="solution-tag">Kiểm tra online</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 4. LMS -->
+            <div class="solution-card">
+                <div class="solution-icon lms"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>Hệ thống LMS</h3>
+                <p>Nền tảng quản lý học tập (LMS) giúp giáo viên tạo bài giảng, quản lý lớp học, theo dõi tiến độ và tương tác với học sinh dễ dàng.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">Quản lý lớp học</span>
+                    <span class="solution-tag">Bài giảng số</span>
+                    <span class="solution-tag">Theo dõi tiến độ</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 5. IoT & Smart Classroom -->
+            <div class="solution-card">
+                <div class="solution-icon iot"><i class="fas fa-microchip"></i></div>
+                <h3>IoT & Lớp học thông minh</h3>
+                <p>Trang bị công nghệ IoT cho lớp học: bảng tương tác, thiết bị cảm biến, hệ thống quản lý thông minh và môi trường học tập kết nối.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">IoT</span>
+                    <span class="solution-tag">Lớp học thông minh</span>
+                    <span class="solution-tag">Kết nối vạn vật</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- 6. Analytics -->
+            <div class="solution-card">
+                <div class="solution-icon analytics"><i class="fas fa-chart-line"></i></div>
+                <h3>Phân tích dữ liệu giáo dục</h3>
+                <p>Bảng điều khiển trực quan phân tích hiệu suất học tập, dự báo kết quả và đề xuất giải pháp cải thiện cho từng học sinh và toàn trường.</p>
+                <div class="solution-tags">
+                    <span class="solution-tag">Big Data</span>
+                    <span class="solution-tag">Báo cáo</span>
+                    <span class="solution-tag">Dự báo</span>
+                </div>
+                <a href="#" class="learn-more">Tìm hiểu thêm <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-title">
+                <h2>Lợi ích <span>vượt trội</span></h2>
+                <p>IvyEdu mang đến những giá trị thiết thực cho nhà trường và học sinh</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">🎯</span>
+                    <h4>Học tập cá nhân hóa</h4>
+                    <p>AI giúp tùy chỉnh lộ trình học theo năng lực và sở thích của từng học sinh</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🤖</span>
+                    <h4>Đào tạo kỹ năng tương lai</h4>
+                    <p>Trang bị kiến thức về AI, Robotics, Lập trình - những kỹ năng thiết yếu</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">📊</span>
+                    <h4>Dữ liệu thông minh</h4>
+                    <p>Phân tích dữ liệu học tập giúp nhà trường đưa ra quyết định chính xác</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🌍</span>
+                    <h4>Kết nối toàn cầu</h4>
+                    <p>Học sinh tiếp cận kiến thức, tham gia các cuộc thi và giao lưu quốc tế</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Nhà trường nói gì <span>về IvyEdu?</span></h2>
+            <p>Phản hồi từ các đối tác giáo dục đã sử dụng giải pháp của chúng tôi</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"Giải pháp AI của IvyEdu đã giúp chúng tôi nâng cao chất lượng giảng dạy và học tập, học sinh tiến bộ rõ rệt chỉ sau 1 học kỳ."</blockquote>
+                <div class="testimonial-author">
+                    <div class="avatar">T</div>
+                    <div class="info">
+                        <strong>Thầy Nguyễn Văn A</strong>
+                        <span>Hiệu trưởng trường THPT ABC</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"Chương trình Robotics đã tạo sân chơi bổ ích, học sinh đam mê sáng tạo và đạt giải cao trong cuộc thi Robocon toàn quốc."</blockquote>
+                <div class="testimonial-author">
+                    <div class="avatar">C</div>
+                    <div class="info">
+                        <strong>Cô Trần Thị B</strong>
+                        <span>Giáo viên STEM, trường THCS XYZ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <blockquote>"LMS của IvyEdu dễ sử dụng, giúp quản lý lớp học và bài giảng hiệu quả, tiết kiệm thời gian cho giáo viên."</blockquote>
+                <div class="testimonial-author">
+                    <div class="avatar">P</div>
+                    <div class="info">
+                        <strong>Thầy Phạm Văn C</strong>
+                        <span>Hiệu phó trường tiểu học DEF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Sẵn sàng chuyển đổi giáo dục?</h2>
+            <p>Đăng ký ngay để được tư vấn giải pháp phù hợp nhất cho nhà trường của bạn</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary"><i class="fas fa-paper-plane"></i> Đăng ký ngay</a>
+                <a href="#" class="btn-secondary"><i class="fas fa-phone"></i> 0987 654 321</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+  <div class="footer__grid">
+
+    <div class="footer__col">
+      <h4>IvyEdu</h4>
+      <ul>
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+        <li><a href="#">Tin tức</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Sản phẩm</h4>
+      <ul>
+        <li><a href="#">Khoá học</a></li>
+        <li><a href="#">Giải pháp giáo dục</a></li>
+        <li><a href="#">Đối tác</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="#">Câu hỏi thường gặp</a></li>
+        <li><a href="#">Chính sách</a></li>
+        <li><a href="#">Điều khoản</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="#">Hotline</a></li>
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Địa chỉ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <div class="footer__map-wrap">
+        <iframe
+          class="footer__map"
+          src="https://www.google.com/maps?q=10.7757177,106.6823607&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Vị trí công ty trên Google Maps">
+        </iframe>
+        <a class="footer__map-link" href="https://maps.app.goo.gl/5dpxp6A7uuXxUA2p8" target="_blank" rel="noopener noreferrer">
+          Mở trong Google Maps ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Kênh truyền thông</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Youtube</a></li>
+        <li><a href="#">TikTok</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p>© 2026 IvyEdu. All rights reserved.</p>
+    <p>Sử dụng nội dung ở trang này và dịch vụ tại IvyEdu có nghĩa là bạn đồng ý với <a href="#">Thỏa thuận sử dụng</a> và <a href="#">Chính sách bảo mật</a> của chúng tôi.</p>
+  </div>
+</footer>
+
+    <!-- FLOATING CHATBOX -->
+    <div id="contact-wrapper">
+        <button id="contact-toggle" class="contact-toggle-btn">
+            <i class="fas fa-comment-dots"></i>
+            <span class="pulse-ring"></span>
+        </button>
+
+        <div id="contact-panel" class="contact-panel">
+            <div class="panel-header">
+                <div class="header-left">
+                    <img src="logocongty.webp" alt="IvyEdu Logo" class="company-logo">
+                    <div class="header-text">
+                        <span class="brand-name">IvyEdu</span>
+                        <span class="sub-text">Hỗ trợ trực tuyến</span>
+                    </div>
+                </div>
+                <button id="panel-close" class="panel-close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-body">
+                <div class="company-intro">
+                    <div class="company-name">
+                        <i class="fas fa-graduation-cap"></i> IvyEdu
+                    </div>
+                    <p class="company-slogan">Avenue with Multiple Values</p>
+                </div>
+                <div class="divider"></div>
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <div class="icon-wrapper phone"><i class="fas fa-phone"></i></div>
+                        <div class="contact-content">
+                            <span class="contact-label">Hotline</span>
+                            <a href="tel:+84987654321">0987 654 321</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-wrapper email"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-content">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:info@ivyedu.com">info@ivyedu.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-wrapper facebook"><i class="fab fa-facebook-f"></i></div>
+                        <div class="contact-content">
+                            <span class="contact-label">Facebook</span>
+                            <a href="https://www.facebook.com/ivyedu" target="_blank">IvyEdu Official</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-wrapper zalo"><i class="fab fa-zalo"></i></div>
+                        <div class="contact-content">
+                            <span class="contact-label">Zalo OA</span>
+                            <a href="https://zalo.me/0987654321" target="_blank">IvyEdu Zalo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span>📌 Phản hồi trong 24h</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Chatbox toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('contact-toggle');
+            const closeBtn = document.getElementById('panel-close');
+            const panel = document.getElementById('contact-panel');
+
+            function openPanel() {
+                panel.classList.add('active');
+            }
+
+            function closePanel() {
+                panel.classList.remove('active');
+            }
+
+            function togglePanel() {
+                panel.classList.toggle('active');
+            }
+
+            toggleBtn.addEventListener('click', togglePanel);
+            closeBtn.addEventListener('click', closePanel);
+
+            document.addEventListener('click', function(e) {
+                const wrapper = document.getElementById('contact-wrapper');
+                if (!wrapper.contains(e.target)) {
+                    closePanel();
+                }
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IvyEdu - Câu hỏi thường gặp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        /* ============================================= */
+        /* ===== HEADER ===== */
+        /* ============================================= */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .blue {
+            color: #1A3C6E;
+        }
+
+        .logo-text .red {
+            color: #C8102E;
+        }
+
+        .logo-text .gray {
+            color: #1e293b;
+        }
+
+        .logo-slogan {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #1A3C6E;
+            text-transform: uppercase;
+            padding-left: 12px;
+            border-left: 2px solid #C8102E;
+            line-height: 1.3;
+        }
+
+        .logo-slogan small {
+            display: block;
+            font-weight: 300;
+            font-size: 8px;
+            color: #94a3b8;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 26px;
+            }
+            .logo-slogan {
+                font-size: 8px;
+            }
+            .logo-slogan small {
+                font-size: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 22px;
+            }
+            .logo-slogan {
+                display: none;
+            }
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-main > li {
+            list-style: none;
+            position: relative;
+        }
+
+        .nav-main > li > a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-main > li > a:hover {
+            background: #eef2f6;
+            color: #1A3C6E;
+        }
+
+        .nav-main > li > a.active {
+            background: #1A3C6E;
+            color: #fff;
+        }
+
+        .nav-main > li > a .arrow {
+            font-size: 11px;
+            margin-left: 4px;
+            color: #94a3b8;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 42px;
+            left: 0;
+            min-width: 240px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.25s ease;
+            border: 1px solid #f0f2f5;
+        }
+
+        .nav-main > li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown li {
+            list-style: none;
+        }
+
+        .dropdown li a {
+            display: block;
+            padding: 8px 22px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .dropdown li a:hover {
+            background: #f1f5f9;
+            color: #1A3C6E;
+        }
+
+        .dropdown .group-title {
+            font-weight: 600;
+            color: #0f172a;
+            padding: 8px 22px 4px;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .dropdown .divider {
+            height: 1px;
+            background: #e9edf2;
+            margin: 6px 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-actions a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .btn-login {
+            color: #1A3C6E;
+            background: transparent;
+            border: 1.5px solid #dce1e8;
+        }
+
+        .btn-login:hover {
+            background: #f1f5f9;
+            border-color: #b0bccb;
+        }
+
+        .btn-register {
+            color: #fff;
+            background: #1A3C6E;
+            border: 1.5px solid #1A3C6E;
+        }
+
+        .btn-register:hover {
+            background: #0F2B4F;
+            border-color: #0F2B4F;
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                padding: 0 20px;
+            }
+            .nav-main > li > a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 14px 0;
+                gap: 12px;
+            }
+            .nav-main {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px;
+                width: 100%;
+                order: 3;
+                border-top: 1px solid #ecf0f4;
+                padding-top: 12px;
+            }
+            .nav-main > li > a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            .header-actions {
+                gap: 6px;
+            }
+            .header-actions a {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .dropdown {
+                min-width: 180px;
+                left: -10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0 12px;
+            }
+            .nav-main > li > a {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+            .header-actions a {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+        }
+
+        /* ============================================= */
+        /* ===== BANNER ===== */
+        /* ============================================= */
+        .page-banner {
+            background: linear-gradient(135deg, #1A3C6E, #0f2b4f);
+            padding: 60px 40px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(200, 16, 46, 0.1);
+            border-radius: 50%;
+        }
+
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(200, 16, 46, 0.08);
+            border-radius: 50%;
+        }
+
+        .page-banner h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-banner h1 .highlight {
+            color: #C8102E;
+        }
+
+        .page-banner p {
+            font-size: 18px;
+            opacity: 0.8;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================= */
+        /* ===== FAQ SECTION ===== */
+        /* ============================================= */
+        .faq-section {
+            padding: 60px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 40px;
+        }
+
+        .faq-category .cat-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1A3C6E;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C8102E;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-category .cat-title i {
+            color: #C8102E;
+            font-size: 20px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #e9edf4;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #C8102E;
+        }
+
+        .faq-question {
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #f8faff;
+        }
+
+        .faq-question .q-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A3C6E;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-question .q-text .q-icon {
+            color: #C8102E;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .faq-question .toggle-icon {
+            font-size: 18px;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .faq-item.active .faq-question .toggle-icon {
+            transform: rotate(180deg);
+            color: #C8102E;
+        }
+
+        .faq-item.active .faq-question {
+            background: #f8faff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            padding: 0 24px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .faq-answer ul {
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .faq-answer ul li {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+            list-style: disc;
+        }
+
+        /* ===== SEARCH FAQ ===== */
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 16px 56px 16px 24px;
+            border-radius: 50px;
+            border: 2px solid #e9edf4;
+            font-size: 16px;
+            color: #1e293b;
+            outline: none;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .faq-search input:focus {
+            border-color: #1A3C6E;
+            box-shadow: 0 0 0 4px rgba(26, 60, 110, 0.08);
+        }
+
+        .faq-search input::placeholder {
+            color: #94a3b8;
+        }
+
+        .faq-search .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        /* ===== NO RESULT ===== */
+        .no-result {
+            text-align: center;
+            padding: 40px 0;
+            display: none;
+        }
+
+        .no-result.show {
+            display: block;
+        }
+
+        .no-result i {
+            font-size: 48px;
+            color: #C8102E;
+            margin-bottom: 12px;
+        }
+
+        .no-result h3 {
+            font-size: 20px;
+            color: #1A3C6E;
+        }
+
+        .no-result p {
+            color: #94a3b8;
+        }
+
+        /* ============================================= */
+        /* ===== FOOTER ===== */
+        /* ============================================= */
+        .footer {
+            background: #0a1628;
+            color: #c8d0dc;
+            padding: 60px 40px 0;
+            margin-top: 20px;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-col .flogo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-col .flogo .highlight {
+            color: #C8102E;
+        }
+        .footer-col .flogo .blue {
+            color: #fff;
+        }
+
+        .footer-col .desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            max-width: 320px;
+        }
+
+        .footer-col .social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-col .social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c8d0dc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-col .social a:hover {
+            background: #C8102E;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #C8102E;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .footer-col ul li a i {
+            font-size: 10px;
+            color: #C8102E;
+        }
+
+        .footer-col .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .footer-col .contact-item i {
+            width: 18px;
+            color: #C8102E;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .footer-col .contact-item a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col .contact-item a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 40px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .footer-bottom .copyright {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-bottom .copyright .heart {
+            color: #C8102E;
+        }
+
+        .footer-bottom .links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom .links a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 13px;
+        }
+
+        .footer-bottom .links a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom .links .divider {
+            color: #2a3a5a;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .faq-section {
+                padding: 40px 24px;
+            }
+            .page-banner h1 {
+                font-size: 34px;
+            }
+            .footer {
+                padding: 40px 24px 0;
+            }
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .footer-col:first-child {
+                grid-column: 1 / -1;
+            }
+            .footer-col .desc {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 30px 20px;
+            }
+            .page-banner h1 {
+                font-size: 28px;
+            }
+            .page-banner p {
+                font-size: 15px;
+            }
+            .faq-category .cat-title {
+                font-size: 19px;
+            }
+            .faq-question {
+                padding: 14px 18px;
+            }
+            .faq-question .q-text {
+                font-size: 14px;
+            }
+            .faq-answer p,
+            .faq-answer ul li {
+                font-size: 14px;
+            }
+            .footer {
+                padding: 30px 20px 0;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-col:first-child {
+                grid-column: 1;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .footer-bottom .links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .footer-bottom .links .divider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-section {
+                padding: 24px 16px;
+            }
+            .page-banner {
+                padding: 40px 20px;
+            }
+            .page-banner h1 {
+                font-size: 24px;
+            }
+            .faq-category .cat-title {
+                font-size: 17px;
+            }
+            .faq-question .q-text {
+                font-size: 13px;
+            }
+            .faq-question {
+                padding: 12px 14px;
+            }
+            .faq-answer {
+                padding: 0 14px;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 14px 16px;
+            }
+            .footer {
+                padding: 24px 16px 0;
+            }
+            .footer-col .flogo {
+                font-size: 24px;
+            }
+            .footer-col h4 {
+                font-size: 15px;
+            }
+            .footer-col .social a {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            .faq-search input {
+                font-size: 14px;
+                padding: 14px 50px 14px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- ===== HEADER ===== -->
+    <!-- ========================================== -->
+    <header class="header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                <div class="logo-text">
+                    <span class="blue">I</span>
+                    <span class="gray">v</span>
+                    <span class="gray">y</span>
+                    <span class="red">E</span>
+                    <span class="gray">d</span>
+                    <span class="gray">u</span>
+                </div>
+                <div class="logo-slogan">
+                    A Venue with Multiple Values
+                    <small>IvyEdu</small>
+                </div>
+            </a>
+
+            <ul class="nav-main">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="about.html">
+                        Về IvyEdu <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="about.html#vision">Tầm nhìn - Sứ mệnh</a></li>
+                        <li><a href="about.html#values">Giá trị cốt lõi</a></li>
+                        <li><a href="about.html#milestones">Cột mốc phát triển</a></li>
+                        <li><a href="about.html#teachers">Đội ngũ nhân sự</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Sản phẩm <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="#">Trung tâm ngoại ngữ IVYPrep</a></li>
+                        <li><a href="#">IVYBUUDY</a></li>
+                        <li><a href="#">IVYHUB</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Giải pháp <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li class="group-title">B2C – Cá nhân</li>
+                        <li><a href="#">Giới thiệu giải pháp</a></li>
+                        <li><a href="#">Đào tạo nhân sự</a></li>
+                        <li><a href="#">Báo giá</a></li>
+                        <li class="divider"></li>
+                        <li class="group-title">B2B – Doanh nghiệp / Nhà trường</li>
+                        <li><a href="#">Giới thiệu giải pháp</a></li>
+                        <li><a href="#">Đào tạo nhân sự</a></li>
+                        <li><a href="#">Báo giá</a></li>
+                        <li class="divider"></li>
+                        <li class="group-title">B2B2C – Đối tác / Affiliate</li>
+                        <li><a href="#">Giới thiệu đối tác</a></li>
+                        <li><a href="#">Affiliate</a></li>
+                        <li><a href="#">Chính sách hoa hồng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Tuyển dụng <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="#">Làm giáo viên</a></li>
+                        <li><a href="#">Làm công tác viên giảng dạy</a></li>
+                        <li><a href="#">Làm nhân viên parttime</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="#" class="btn-login">Login</a>
+                <a href="#" class="btn-register">Register</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- ===== BANNER ===== -->
+    <!-- ========================================== -->
+    <section class="page-banner">
+        <h1>Câu hỏi <span class="highlight">Thường gặp</span></h1>
+        <p>Những thắc mắc phổ biến của học viên và phụ huynh về IvyEdu</p>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== FAQ CONTENT ===== -->
+    <!-- ========================================== -->
+    <section class="faq-section">
+
+        <!-- Search -->
+        <div class="faq-search">
+            <input type="text" id="faqSearch" placeholder="🔍 Tìm kiếm câu hỏi..." />
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+        </div>
+
+        <!-- ===== DANH MỤC 1: VỀ KHÓA HỌC ===== -->
+        <div class="faq-category">
+            <div class="cat-title">
+                <i class="fas fa-graduation-cap"></i> Về khóa học
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> IvyEdu có những khóa học nào?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>IvyEdu cung cấp đa dạng các khóa học:</p>
+                    <ul>
+                        <li><strong>Anh ngữ Vận dụng</strong> - Phát triển 4 kỹ năng Nghe-Nói-Đọc-Viết</li>
+                        <li><strong>Test Prep - IELTS</strong> - Luyện thi chứng chỉ quốc tế</li>
+                        <li><strong>Phát triển dự án cá nhân</strong> - Rèn luyện kỹ năng thuyết trình và lãnh đạo</li>
+                        <li><strong>Khóa đại học hệ</strong> - Đào tạo chuyên sâu cho sinh viên</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Học phí các khóa học như thế nào?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Học phí dao động từ <strong>2.900.000đ - 4.800.000đ</strong> tùy theo khóa học. IvyEdu thường xuyên có các chương trình ưu đãi và học bổng cho học viên đăng ký sớm hoặc theo nhóm. Liên hệ hotline <strong>1900 1234</strong> để được tư vấn cụ thể.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Lịch học được sắp xếp như thế nào?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>IvyEdu có các khung giờ linh hoạt để học viên lựa chọn:</p>
+                    <ul>
+                        <li><strong>Buổi sáng:</strong> 8:00 - 11:30</li>
+                        <li><strong>Buổi chiều:</strong> 13:30 - 17:00</li>
+                        <li><strong>Buổi tối:</strong> 18:00 - 21:30</li>
+                        <li><strong>Cuối tuần:</strong> Thứ 7 và Chủ nhật</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Có lớp học thử không?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Có! IvyEdu có chương trình <strong>học thử miễn phí</strong> cho tất cả các khóa học. Bạn có thể đăng ký học thử để trải nghiệm phương pháp giảng dạy và môi trường học tập trước khi quyết định đăng ký chính thức.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DANH MỤC 2: VỀ ĐĂNG KÝ ===== -->
+        <div class="faq-category">
+            <div class="cat-title">
+                <i class="fas fa-clipboard-list"></i> Về đăng ký
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Làm thế nào để đăng ký khóa học?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bạn có thể đăng ký khóa học theo các cách sau:</p>
+                    <ul>
+                        <li><strong>Online:</strong> Điền form đăng ký trên website</li>
+                        <li><strong>Hotline:</strong> Gọi <strong>1900 1234</strong> để được tư vấn và đăng ký</li>
+                        <li><strong>Trực tiếp:</strong> Đến văn phòng IvyEdu tại 123 Đường Nguyễn Văn Linh, Quận 7, TP.HCM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Thủ tục nhập học cần những gì?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Hồ sơ nhập học bao gồm:</p>
+                    <ul>
+                        <li>Phiếu đăng ký học (cấp tại IvyEdu)</li>
+                        <li>Bản sao CMND/CCCD của học viên (hoặc phụ huynh)</li>
+                        <li>2 ảnh 3x4</li>
+                        <li>Bảng điểm/Bằng cấp (nếu có)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> IvyEdu có hỗ trợ học bổng không?</span>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Có! IvyEdu có chương trình <strong>học bổng</strong> dành cho:</p>
+                    <ul>
+                        <li>Học viên có thành tích học tập xuất sắc</li>
+                        <li>Học viên có hoàn cảnh khó khăn</li>
+                        <li>Học viên đăng ký theo nhóm</li>
+                        <li>Học viên giới thiệu bạn bè</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DANH MỤC 3: VỀ PHƯƠNG PHÁP ===== -->
+        <div class="faq-category">
+            <div class="cat-title">
+                <i class="fas fa-lightbulb"></i> Về phương pháp giảng dạy
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span class="q-text"><span class="q-icon">Q:</span> Phương pháp Anh ngữ Liên Môn là gì?</span>
+                    <span class="toggle-icon"><i class="fas fa

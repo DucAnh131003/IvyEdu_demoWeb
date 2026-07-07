@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IvyEdu · Tuyển dụng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="recruitment.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="main-wrapper">
+
+  <!-- ===== LEFT PANEL ===== -->
+  <div class="left-panel">
+    <div class="deco-circle"></div>
+
+    <div class="logo-area">
+      <div class="logo-icon">
+        <div class="icon-box">I</div>
+        <div class="brand-name">Ivy<span>Edu</span></div>
+      </div>
+      <div class="logo-tagline">Avenue with Multiple Values</div>
+    </div>
+
+    <div class="left-content">
+      <h2>
+        Gia nhập<br>
+        <span class="highlight-red">đội ngũ</span><br>
+        <span class="highlight-blue">IvyEdu</span>
+      </h2>
+      <p>Cơ hội phát triển cùng môi trường giáo dục hiện đại, nơi mỗi giá trị đều được trân trọng.</p>
+      <div class="features">
+        <div class="feat"><span class="dot"></span> Môi trường chuyên nghiệp</div>
+        <div class="feat"><span class="dot"></span> Đào tạo & phát triển liên tục</div>
+        <div class="feat"><span class="dot"></span> Lộ trình thăng tiến rõ ràng</div>
+      </div>
+    </div>
+
+    <div class="left-footer">
+      © 2026 IvyEdu · Tuyển dụng
+    </div>
+  </div>
+
+  <!-- ===== RIGHT PANEL ===== -->
+  <div class="right-panel">
+
+    <div class="right-title">Gia nhập đội ngũ <span class="highlight-red">IvyEdu</span></div>
+    <div class="right-sub">Chọn vị trí phù hợp và gửi thông tin ứng tuyển:</div>
+
+    <!-- Position -->
+    <div class="position-box" id="positionBox">
+      <label>
+        <input type="radio" name="position" value="teacher" onchange="switchForm('teacher')">
+        Làm giáo viên
+      </label>
+      <label>
+        <input type="radio" name="position" value="ctv" onchange="switchForm('ctv')">
+        Làm công tác viên giảng dạy
+      </label>
+      <label>
+        <input type="radio" name="position" value="parttime" onchange="switchForm('parttime')">
+        Làm nhân viên parttime
+      </label>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps">
+      <span class="step"><span class="step-num">Bước 1</span> Hiện trạng chọn vị trí trước</span>
+      <span class="step"><span class="step-num">Bước 2</span> Hiện form đăng ký</span>
+    </div>
+
+    <!-- ===== FORM 1: GIÁO VIÊN ===== -->
+    <div class="form-container hidden" id="formTeacher">
+      <div class="info-note">
+        <strong>Thông tin ứng tuyển cho vị trí Giáo viên</strong><br>
+        Để ứng tuyển cho vị trí Giáo viên tại IvyEdu, ứng viên vui lòng điền đầy đủ thông tin bên dưới. IvyEdu sẽ liên hệ ứng viên thông qua Sổ điện thoại/Email mà ứng viên đã cung cấp. Xin hãy kiểm tra điện thoại và Email thường xuyên để tránh bỏ lỡ thông tin từ IvyEdu.
+        <div class="thank">Xin cảm ơn bạn đã quan tâm đến vị trí này tại IvyEdu!</div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
+        </div>
+
+        <div class="row-2">
+          <div class="form-group">
+            <label class="form-label">Số điện thoại</label>
+            <input type="tel" class="form-control" placeholder="Số điện thoại" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <label class="form-label">Trình độ học vấn và chứng chỉ liên quan</label>
+          <input type="text" class="form-control" placeholder="Vui lòng ghi rõ tên trường đại học, ngành học và chứng chỉ Anh ngữ nếu có...">
+          <div class="example-text">Ví dụ: Đại học Sư phạm - Ngành Ngôn ngữ Anh - IELTS 6.5 và TESOL.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kinh nghiệm giảng dạy tiếng Anh</label>
+          <textarea class="form-control" placeholder="Vui lòng ghi rõ về mỗi kinh nghiệm giảng dạy, bao gồm tên nơi làm việc, vai trò và thời gian làm việc."></textarea>
+          <div class="example-text">Ví dụ: Giáo viên Tiếng Anh tại Trung tâm Ngôn ngữ ABC: 6 tháng</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Ngày có thể giảng dạy</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="mon-wed-fri"> Thứ 2 - 4 - 6 mỗi tuần</label>
+            <label><input type="checkbox" value="tue-thu-sat"> Thứ 3 - 5 - 7 mỗi tuần</label>
+            <label><input type="checkbox" value="both"> Cả hai</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Khung giờ có thể giảng dạy</label>
+          <div class="time-grid">
+            <label><input type="checkbox" value="8-10"> Sáng: 8:00 - 10:00</label>
+            <label><input type="checkbox" value="10-12"> Sáng: 10:00 - 12:00</label>
+            <label><input type="checkbox" value="14-16"> Chiều: 14:00 - 16:00</label>
+            <label><input type="checkbox" value="16-18"> Chiều: 16:00 - 18:00</label>
+            <label><input type="checkbox" value="18-20"> Tối: 18:00 - 20:00</label>
+            <label><input type="checkbox" value="20-22"> Tối: 20:00 - 22:00</label>
+          </div>
+          <div class="example-text">Có thể chọn nhiều khung giờ:</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Thời lượng có thể dạy trong tuần (tính theo giờ)</label>
+          <input type="number" class="form-control" placeholder="Nhập số giờ" min="1" step="1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tài liên CV / Portfolio</label>
+          <div class="file-area">
+            <span class="btn-browse">Chọn tệp tin</span>
+            <input type="file" accept=".pdf,.doc,.docx,.png,.jpg">
+            <span style="font-size:0.75rem; color:#3f6a80;">(PDF, DOC, JPG, PNG)</span>
+          </div>
+          <div class="example-text">Vui lòng tải CV / Portfolio lên bằng cách bấm vào nút "Chọn tệp tin".</div>
+        </div>
+
+        <button type="submit" class="btn-submit">NỘP ĐƠN ỨNG TUYỂN</button>
+      </form>
+    </div>
+
+    <!-- ===== FORM 2: CTV GIẢNG DẠY ===== -->
+    <div class="form-container hidden" id="formCtv">
+      <div class="info-note">
+        <strong>Thông tin ứng tuyển cho vị trí Công tác viên Giảng dạy</strong><br>
+        Để ứng tuyển cho vị trí Công tác viên Giảng dạy tại IvyEdu, ứng viên vui lòng điền đầy đủ thông tin bên dưới. IvyEdu sẽ liên hệ ứng viên thông qua Sổ điện thoại/Email mà ứng viên đã cung cấp.
+        <div class="thank">Xin cảm ơn bạn đã quan tâm đến vị trí này tại IvyEdu!</div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
+        </div>
+
+        <div class="row-2">
+          <div class="form-group">
+            <label class="form-label">Số điện thoại</label>
+            <input type="tel" class="form-control" placeholder="Số điện thoại" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <label class="form-label">Trình độ học vấn và chứng chỉ liên quan</label>
+          <input type="text" class="form-control" placeholder="Vui lòng ghi rõ tên trường đại học, ngành học và chứng chỉ Anh ngữ nếu có...">
+          <div class="example-text">Ví dụ: Đại học Ngoại ngữ - Ngành Ngôn ngữ Anh - IELTS 7.0</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kinh nghiệm giảng dạy hoặc hỗ trợ giảng dạy</label>
+          <textarea class="form-control" placeholder="Vui lòng ghi rõ về mỗi kinh nghiệm, bao gồm tên nơi làm việc, vai trò và thời gian làm việc."></textarea>
+          <div class="example-text">Ví dụ: Trợ giảng tại Trung tâm Ngoại ngữ XYZ: 4 tháng</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Ngày có thể tham gia</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="mon-wed-fri"> Thứ 2 - 4 - 6 mỗi tuần</label>
+            <label><input type="checkbox" value="tue-thu-sat"> Thứ 3 - 5 - 7 mỗi tuần</label>
+            <label><input type="checkbox" value="both"> Cả hai</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Khung giờ có thể tham gia</label>
+          <div class="time-grid">
+            <label><input type="checkbox" value="8-10"> Sáng: 8:00 - 10:00</label>
+            <label><input type="checkbox" value="10-12"> Sáng: 10:00 - 12:00</label>
+            <label><input type="checkbox" value="14-16"> Chiều: 14:00 - 16:00</label>
+            <label><input type="checkbox" value="16-18"> Chiều: 16:00 - 18:00</label>
+            <label><input type="checkbox" value="18-20"> Tối: 18:00 - 20:00</label>
+            <label><input type="checkbox" value="20-22"> Tối: 20:00 - 22:00</label>
+          </div>
+          <div class="example-text">Có thể chọn nhiều khung giờ:</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Thời lượng có thể tham gia trong tuần (tính theo giờ)</label>
+          <input type="number" class="form-control" placeholder="Nhập số giờ" min="1" step="1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tài liên CV / Portfolio</label>
+          <div class="file-area">
+            <span class="btn-browse">Chọn tệp tin</span>
+            <input type="file" accept=".pdf,.doc,.docx,.png,.jpg">
+            <span style="font-size:0.75rem; color:#3f6a80;">(PDF, DOC, JPG, PNG)</span>
+          </div>
+          <div class="example-text">Vui lòng tải CV / Portfolio lên bằng cách bấm vào nút "Chọn tệp tin".</div>
+        </div>
+
+        <button type="submit" class="btn-submit">NỘP ĐƠN ỨNG TUYỂN</button>
+      </form>
+    </div>
+
+    <!-- ===== FORM 3: PARTTIME ===== -->
+    <div class="form-container hidden" id="formParttime">
+      <div class="info-note">
+        <strong>Thông tin ứng tuyển cho vị trí Nhân viên Part-time</strong><br>
+        Để ứng tuyển cho vị trí Nhân viên Part-time tại IvyEdu, ứng viên vui lòng điền đầy đủ thông tin bên dưới. IvyEdu sẽ liên hệ ứng viên thông qua Sổ điện thoại/Email mà ứng viên đã cung cấp.
+        <div class="thank">Xin cảm ơn bạn đã quan tâm đến vị trí này tại IvyEdu!</div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-control" placeholder="Nhập họ và tên" required>
+        </div>
+
+        <div class="row-2">
+          <div class="form-group">
+            <label class="form-label">Số điện thoại</label>
+            <input type="tel" class="form-control" placeholder="Số điện thoại" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+          <label class="form-label">Trình độ học vấn</label>
+          <input type="text" class="form-control" placeholder="Vui lòng ghi rõ tên trường đại học, ngành học...">
+          <div class="example-text">Ví dụ: Đại học Kinh tế - Ngành Quản trị kinh doanh</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kinh nghiệm làm việc (nếu có)</label>
+          <textarea class="form-control" placeholder="Vui lòng ghi rõ về mỗi kinh nghiệm làm việc, bao gồm tên nơi làm việc, vai trò và thời gian làm việc."></textarea>
+          <div class="example-text">Ví dụ: Nhân viên tư vấn tại Trung tâm Anh ngữ DEF: 8 tháng</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Ngày có thể làm việc</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="mon-wed-fri"> Thứ 2 - 4 - 6 mỗi tuần</label>
+            <label><input type="checkbox" value="tue-thu-sat"> Thứ 3 - 5 - 7 mỗi tuần</label>
+            <label><input type="checkbox" value="both"> Cả hai</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Khung giờ có thể làm việc</label>
+          <div class="time-grid">
+            <label><input type="checkbox" value="8-10"> Sáng: 8:00 - 10:00</label>
+            <label><input type="checkbox" value="10-12"> Sáng: 10:00 - 12:00</label>
+            <label><input type="checkbox" value="14-16"> Chiều: 14:00 - 16:00</label>
+            <label><input type="checkbox" value="16-18"> Chiều: 16:00 - 18:00</label>
+            <label><input type="checkbox" value="18-20"> Tối: 18:00 - 20:00</label>
+            <label><input type="checkbox" value="20-22"> Tối: 20:00 - 22:00</label>
+          </div>
+          <div class="example-text">Có thể chọn nhiều khung giờ:</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Thời lượng có thể làm việc trong tuần (tính theo giờ)</label>
+          <input type="number" class="form-control" placeholder="Nhập số giờ" min="1" step="1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tài liên CV / Portfolio</label>
+          <div class="file-area">
+            <span class="btn-browse">Chọn tệp tin</span>
+            <input type="file" accept=".pdf,.doc,.docx,.png,.jpg">
+            <span style="font-size:0.75rem; color:#3f6a80;">(PDF, DOC, JPG, PNG)</span>
+          </div>
+          <div class="example-text">Vui lòng tải CV / Portfolio lên bằng cách bấm vào nút "Chọn tệp tin".</div>
+        </div>
+
+        <button type="submit" class="btn-submit">NỘP ĐƠN ỨNG TUYỂN</button>
+      </form>
+    </div>
+
+    <div class="footer-note">
+      <span class="highlight-red">IvyEdu</span> — Chúng tôi sẽ liên hệ qua SĐT/Email trong vòng 3 ngày làm việc.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function switchForm(position) {
+    // Ẩn tất cả form
+    document.querySelectorAll('.form-container').forEach(function(el) {
+      el.classList.remove('active');
+      el.classList.add('hidden');
+    });
+
+    // Hiện form tương ứng
+    if (position === 'teacher') {
+      document.getElementById('formTeacher').classList.remove('hidden');
+      document.getElementById('formTeacher').classList.add('active');
+    } else if (position === 'ctv') {
+      document.getElementById('formCtv').classList.remove('hidden');
+      document.getElementById('formCtv').classList.add('active');
+    } else if (position === 'parttime') {
+      document.getElementById('formParttime').classList.remove('hidden');
+      document.getElementById('formParttime').classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>

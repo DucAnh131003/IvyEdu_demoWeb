@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IvyEdu - Đăng ký học thử</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        /* ===== FORM CONTAINER ===== */
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            padding: 48px 40px;
+            box-shadow: 0 20px 60px rgba(26, 60, 110, 0.10);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A3C6E;
+            margin-bottom: 8px;
+        }
+
+        .form-title .highlight {
+            color: #F5A623;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 32px;
+        }
+
+        /* ===== LEVEL SELECTION ===== */
+        .level-selection {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .level-btn {
+            padding: 16px 8px;
+            border-radius: 12px;
+            border: 2px solid #e9edf4;
+            background: #f8faff;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        .level-btn:hover {
+            border-color: #1A3C6E;
+            background: #f0f4ff;
+        }
+
+        .level-btn.active {
+            border-color: #F5A623;
+            background: #fff8ed;
+            color: #1A3C6E;
+            box-shadow: 0 4px 20px rgba(245, 166, 35, 0.15);
+        }
+
+        .level-btn .icon {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .level-btn .label {
+            font-size: 13px;
+        }
+
+        /* ===== FORM ===== */
+        .register-form {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .register-form.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required {
+            color: #e74c3c;
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            font-size: 14px;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1A3C6E;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26, 60, 110, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ===== CHECKBOX ===== */
+        .form-group-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0 24px;
+        }
+
+        .form-group-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: #1A3C6E;
+            cursor: pointer;
+        }
+
+        .form-group-checkbox label {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .form-group-checkbox label a {
+            color: #1A3C6E;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .form-group-checkbox label a:hover {
+            color: #F5A623;
+            text-decoration: underline;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(26, 60, 110, 0.25);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .form-wrapper {
+                padding: 32px 20px;
+                margin: 0 10px;
+            }
+
+            .form-title {
+                font-size: 26px;
+            }
+
+            .level-selection {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .level-btn {
+                padding: 14px 8px;
+                font-size: 14px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-wrapper {
+                padding: 24px 16px;
+            }
+
+            .form-title {
+                font-size: 22px;
+            }
+
+            .level-btn .icon {
+                font-size: 20px;
+            }
+
+            .level-btn .label {
+                font-size: 12px;
+            }
+
+            .btn-submit {
+                font-size: 15px;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== FORM ĐĂNG KÝ HỌC THỬ ===== -->
+    <div class="form-wrapper">
+
+        <h2 class="form-title">
+            Đăng ký <span class="highlight">Học thử</span>
+        </h2>
+        <p class="form-subtitle">
+            Chọn cấp độ phù hợp để nhận tư vấn lộ trình học tập
+        </p>
+
+        <!-- ===== 4 LỰA CHỌN CẤP ĐỘ ===== -->
+        <div class="level-selection">
+            <div class="level-btn" data-level="tieu-hoc">
+                <span class="icon">🧒</span>
+                <span class="label">Cấp 1</span>
+            </div>
+            <div class="level-btn" data-level="thcs">
+                <span class="icon">👦</span>
+                <span class="label">Cấp 2</span>
+            </div>
+            <div class="level-btn" data-level="thpt">
+                <span class="icon">🧑‍🎓</span>
+                <span class="label">Cấp 3</span>
+            </div>
+            <div class="level-btn" data-level="di-lam">
+                <span class="icon">👔</span>
+                <span class="label">Đi làm</span>
+            </div>
+        </div>
+
+        <!-- ===== FORM ===== -->
+        <form class="register-form" id="registerForm">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Họ và tên <span class="required">*</span></label>
+                    <input type="text" placeholder="Nhập họ tên của bạn" required />
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại <span class="required">*</span></label>
+                    <input type="tel" placeholder="Nhập số điện thoại" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input type="email" placeholder="Nhập email của bạn" required />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input type="date" />
+                </div>
+                <div class="form-group">
+                    <label>Cấp độ đã chọn</label>
+                    <input type="text" id="selectedLevelDisplay" readonly style="background:#f1f4f9; color:#1A3C6E; font-weight:600;" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mục tiêu học tập</label>
+                <textarea placeholder="Bạn muốn đạt được mục tiêu gì sau khóa học?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Thời gian mong muốn</label>
+                <select>
+                    <option value="">Chọn thời gian</option>
+                    <option value="sang">Buổi sáng (8:00 - 11:30)</option>
+                    <option value="chieu">Buổi chiều (13:30 - 17:00)</option>
+                    <option value="toi">Buổi tối (18:00 - 21:30)</option>
+                    <option value="cuoi-tuan">Cuối tuần (Thứ 7 - Chủ nhật)</option>
+                </select>
+            </div>
+
+            <!-- Checkbox chấp nhận chính sách -->
+            <div class="form-group-checkbox">
+                <input type="checkbox" id="policyCheck" required />
+                <label for="policyCheck">
+                    Tôi đã đọc và đồng ý với 
+                    <a href="#">Điều khoản dịch vụ</a> và 
+                    <a href="#">Chính sách bảo mật</a> của IvyEdu.
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                <i class="fas fa-paper-plane"></i> Đăng ký ngay
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+        // ===== LẤY CÁC PHẦN TỬ =====
+        const levelBtns = document.querySelectorAll('.level-btn');
+        const registerForm = document.getElementById('registerForm');
+        const selectedLevelDisplay = document.getElementById('selectedLevelDisplay');
+        const policyCheck = document.getElementById('policyCheck');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const levelMap = {
+            'tieu-hoc': 'Cấp 1 - Tiểu học',
+            'thcs': 'Cấp 2 - THCS',
+            'thpt': 'Cấp 3 - THPT',
+            'di-lam': 'Đi làm - Người đi làm'
+        };
+
+        let selectedLevel = null;
+
+        // ===== XỬ LÝ CHỌN CẤP ĐỘ =====
+        levelBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Bỏ active tất cả
+                levelBtns.forEach(b => b.classList.remove('active'));
+
+                // Active button được click
+                this.classList.add('active');
+
+                // Lưu level
+                selectedLevel = this.dataset.level;
+
+                // Hiển thị form
+                registerForm.classList.add('active');
+
+                // Hiển thị cấp độ đã chọn
+                selectedLevelDisplay.value = levelMap[selectedLevel] || selectedLevel;
+
+                // Cuộn xuống form
+                registerForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ===== XỬ LÝ CHECKBOX =====
+        policyCheck.addEventListener('change', function() {
+            if (this.checked) {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+            }
+        });
+
+        // ===== XỬ LÝ SUBMIT =====
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Kiểm tra đã chọn cấp độ chưa
+            if (!selectedLevel) {
+                alert('Vui lòng chọn cấp độ phù hợp!');
+                return;
+            }
+
+            // Lấy dữ liệu form
+            const formData = new FormData(this);
+            const data = {
+                level: levelMap[selectedLevel],
+                name: formData.get('name') || '',
+                phone: formData.get('phone') || '',
+                email: formData.get('email') || '',
+                dob: formData.get('dob') || '',
+                goal: formData.get('goal') || '',
+                time: formData.get('time') || '',
+            };
+
+            console.log('📋 Thông tin đăng ký:', data);
+
+            // Hiển thị thông báo thành công
+            alert('✅ Đăng ký học thử thành công!\n\n' +
+                '📌 Cấp độ: ' + data.level + '\n' +
+                '👤 Họ tên: ' + data.name + '\n' +
+                '📱 SĐT: ' + data.phone + '\n' +
+                '📧 Email: ' + data.email + '\n\n' +
+                'IvyEdu sẽ liên hệ với bạn trong thời gian sớm nhất! 🎉');
+
+            // Reset form
+            this.reset();
+            selectedLevelDisplay.value = '';
+            levelBtns.forEach(b => b.classList.remove('active'));
+            registerForm.classList.remove('active');
+            selectedLevel = null;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
+        });
+    </script>
+
+</body>
+</html>

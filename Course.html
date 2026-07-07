@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anh ngữ Online · 4 cấp độ · Nhiều khóa học</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f9ff;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            background: linear-gradient(145deg, #0b2a4e, #123b66);
+            color: white;
+            padding: 20px 0 16px;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.25);
+            border-bottom: 4px solid #facc15;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+        }
+        .logo span {
+            color: #facc15;
+        }
+        .logo .tagline {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav a:hover {
+            color: #facc15;
+            border-bottom-color: #facc15;
+        }
+        .nav a i {
+            margin-right: 6px;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            background: linear-gradient(135deg, #e0edff 0%, #cddefa 100%);
+            padding: 36px 0 44px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 0 0 36px 36px;
+        }
+        .hero h2 {
+            font-size: 2.2rem;
+            color: #0b2a4e;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #1e3a5f;
+            max-width: 650px;
+            margin: 8px auto 0;
+            opacity: 0.9;
+        }
+
+        /* ---------- LEVEL SECTION ---------- */
+        .level-section {
+            padding: 44px 0 50px;
+            margin-bottom: 16px;
+            border-radius: 36px;
+            background: white;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            transition: 0.2s;
+            scroll-margin-top: 80px;
+        }
+
+        .level-section:nth-child(even) {
+            background: #f8fcff;
+        }
+
+        .level-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #eef4ff;
+            padding-bottom: 16px;
+        }
+
+        .level-header .icon-badge {
+            font-size: 2.2rem;
+            width: 64px;
+            height: 64px;
+            background: #0b2a4e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .level-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b2a4e;
+        }
+        .level-header .sub {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #64748b;
+            margin-left: 6px;
+        }
+        .level-header .level-desc {
+            margin-left: auto;
+            font-size: 0.95rem;
+            color: #475569;
+            background: #eef4ff;
+            padding: 6px 18px;
+            border-radius: 60px;
+        }
+
+        /* Màu sắc riêng cho từng level */
+        #tieu-hoc .icon-badge { background: #2b6c8f; }
+        #thcs .icon-badge { background: #1f7a5a; }
+        #thpt .icon-badge { background: #8a4b7a; }
+        #nguoi-di-lam .icon-badge { background: #b6583a; }
+
+        /* ---------- COURSE CARDS (bên trong mỗi section) ---------- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 20px 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f8;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(11, 42, 78, 0.10);
+            border-color: #facc15;
+        }
+
+        .course-card .badge {
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            background: #facc15;
+            color: #0b2a4e;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+
+        .course-card .course-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: #0b2a4e;
+        }
+
+        .course-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0b2a4e;
+            margin-bottom: 4px;
+        }
+
+        .course-card .course-level {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .course-card .course-level i {
+            color: #facc15;
+        }
+
+        .course-card p {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .course-card .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            border-top: 1px solid #eef2f8;
+            padding-top: 14px;
+            margin-top: 6px;
+        }
+
+        .course-card .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0b2a4e;
+        }
+
+        .course-card .btn-small {
+            background: #0b2a4e;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .course-card .btn-small:hover {
+            background: #facc15;
+            color: #0b2a4e;
+            box-shadow: 0 4px 14px rgba(250, 204, 21, 0.3);
+        }
+
+        /* ---------- FEATURE BANNER ---------- */
+        .feature-banner {
+            background: linear-gradient(120deg, #0b2a4e, #1d4a7a);
+            color: white;
+            padding: 32px 24px;
+            border-radius: 40px;
+            margin: 40px 0 20px;
+            text-align: center;
+            box-shadow: 0 12px 28px rgba(11, 42, 78, 0.2);
+        }
+        .feature-banner h3 {
+            font-size: 1.6rem;
+        }
+        .feature-banner p {
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 6px auto 16px;
+        }
+        .feature-banner .btn {
+            background: #facc15;
+            color: #0b2a4e;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-banner .btn:hover {
+            background: white;
+            color: #0b2a4e;
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+        }
+
+        /* ---------- FOOTER ---------- */
+  
+  :root{
+    --navy: #1F295F;
+    --navy-dark: #16204a;
+    --red: #B12637;
+    --text-light: #E8EAF2;
+    --text-muted: #B7BEDA;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#fff;
+  }
+
+  .footer{
+    background: var(--navy);
+    color: var(--text-light);
+    padding: 40px 24px 20px;
+  }
+
+  .footer__grid{
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1fr 1.3fr 1fr;
+    gap: 24px;
+  }
+
+  .footer__col h4{
+    margin: 0 0 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .footer__col ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__col ul li{
+    margin-bottom: 8px;
+  }
+
+  .footer__col ul li a{
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color .2s ease;
+  }
+
+  .footer__col ul li a:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__map-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer__map{
+    width: 100%;
+    aspect-ratio: 16/10;
+    border: 0;
+    border-radius: 6px;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .footer__map-link{
+    align-self: flex-end;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .footer__map-link:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__bottom{
+    max-width: 1140px;
+    margin: 32px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .footer__bottom p{
+    margin: 0 0 6px;
+  }
+
+  .footer__bottom a{
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer__bottom a:hover{
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px){
+    .footer__grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px){
+    .footer__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 900px){
+    .footer__grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px){
+    .footer__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav a {
+                margin-left: 0;
+                margin-right: 16px;
+                display: inline-block;
+                margin-top: 4px;
+            }
+            .level-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .level-header .level-desc {
+                margin-left: 0;
+            }
+            .course-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h2 {
+                font-size: 1.6rem;
+            }
+            .level-section {
+                padding: 28px 16px;
+                border-radius: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1> <img id="logo" style="width: 10%; height: auto;" src="images/logo.png" alt="IVYEDU Logo"> <span>IVY</span>EDU</h1>
+                <div class="tagline"><i class="fas fa-globe-asia"></i> 4 cấp · 14+ khóa học</div>
+            </div>
+            <div class="nav">
+                <a href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="#tieu-hoc"><i class="fas fa-child"></i> Tiểu học</a>
+                <a href="#thcs"><i class="fas fa-user-graduate"></i> THCS</a>
+                <a href="#thpt"><i class="fas fa-school"></i> THPT</a>
+                <a href="#nguoi-di-lam"><i class="fas fa-briefcase"></i> Đi làm</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h2>Chọn cấp độ, chọn khóa học phù hợp</h2>
+            <p>Mỗi cấp học đều có nhiều khóa học nhỏ với lộ trình rõ ràng, giúp bạn tiến bộ từng bước.</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ====== SECTION 1: TIỂU HỌC (4 khóa học con) ====== -->
+    <section class="level-section" id="tieu-hoc">
+        <div class="container">
+            <div class="level-header">
+                <div class="icon-badge"><i class="fas fa-child"></i></div>
+                <h2>Tiểu học <span class="sub">· 6–11 tuổi</span></h2>
+                <span class="level-desc"><i class="fas fa-star" style="color: #facc15;"></i> 4 khóa học</span>
+            </div>
+            <div class="course-grid">
+                <!-- Khóa 1: Starters - Link đến trang detail -->
+                <a href="product-detail.html?course=starters" class="course-card">
+                    <span class="badge">Mới</span>
+                    <div class="course-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <h4>Starters</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> Pre-A1 · 6–7 tuổi</div>
+                    <p>Bảng chữ cái, từ vựng cơ bản, giới thiệu bản thân, số đếm, màu sắc.</p>
+                    <div class="meta">
+                        <span class="price">850.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <!-- Khóa 2: Movers -->
+                <a href="product-detail.html?course=movers" class="course-card">
+                    <div class="course-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Movers</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A1 · 8–9 tuổi</div>
+                    <p>Mở rộng từ vựng, câu đơn giản, đọc hiểu đoạn ngắn, nghe và kể lại.</p>
+                    <div class="meta">
+                        <span class="price">950.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <!-- Khóa 3: Flyers -->
+                <a href="product-detail.html?course=flyers" class="course-card">
+                    <div class="course-icon"><i class="fas fa-comments"></i></div>
+                    <h4>Flyers</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A2 · 10–11 tuổi</div>
+                    <p>Giao tiếp tự tin, viết đoạn văn ngắn, kể chuyện, ngữ pháp cơ bản.</p>
+                    <div class="meta">
+                        <span class="price">1.050.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <!-- Khóa 4: Summer Camp -->
+                <a href="product-detail.html?course=summer-camp" class="course-card">
+                    <div class="course-icon"><i class="fas fa-gamepad"></i></div>
+                    <h4>Summer Camp</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A1-A2 · Hè 2026</div>
+                    <p>Học qua trò chơi, dự án nhóm, kỹ năng mềm và tiếng Anh giao tiếp.</p>
+                    <div class="meta">
+                        <span class="price">1.200.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SECTION 2: THCS (4 khóa học con) ====== -->
+    <section class="level-section" id="thcs">
+        <div class="container">
+            <div class="level-header">
+                <div class="icon-badge"><i class="fas fa-user-graduate"></i></div>
+                <h2>THCS <span class="sub">· 12–15 tuổi</span></h2>
+                <span class="level-desc"><i class="fas fa-star" style="color: #facc15;"></i> 4 khóa học</span>
+            </div>
+            <div class="course-grid">
+                <a href="product-detail.html?course=foundation-a" class="course-card">
+                    <div class="course-icon"><i class="fas fa-layer-group"></i></div>
+                    <h4>Foundation A</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A1 · Lớp 6</div>
+                    <p>Ngữ pháp nền tảng, thì hiện tại, quá khứ, từ vựng theo chủ đề học đường.</p>
+                    <div class="meta">
+                        <span class="price">1.100.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=foundation-b" class="course-card">
+                    <div class="course-icon"><i class="fas fa-arrow-up"></i></div>
+                    <h4>Foundation B</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A2 · Lớp 7–8</div>
+                    <p>Mở rộng ngữ pháp, câu điều kiện, câu bị động, luyện đọc hiểu.</p>
+                    <div class="meta">
+                        <span class="price">1.250.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=writing-reading" class="course-card">
+                    <span class="badge">Hot</span>
+                    <div class="course-icon"><i class="fas fa-pen-fancy"></i></div>
+                    <h4>Writing & Reading</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A2-B1 · Lớp 8–9</div>
+                    <p>Luyện viết đoạn văn, bài luận, kỹ năng đọc hiểu & phân tích văn bản.</p>
+                    <div class="meta">
+                        <span class="price">1.350.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=speaking-booster" class="course-card">
+                    <div class="course-icon"><i class="fas fa-microphone-alt"></i></div>
+                    <h4>Speaking Booster</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> A2-B1 · Lớp 9</div>
+                    <p>Phản xạ giao tiếp, thuyết trình ngắn, luyện phát âm chuẩn.</p>
+                    <div class="meta">
+                        <span class="price">1.280.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SECTION 3: THPT (4 khóa học con) ====== -->
+    <section class="level-section" id="thpt">
+        <div class="container">
+            <div class="level-header">
+                <div class="icon-badge"><i class="fas fa-school"></i></div>
+                <h2>THPT <span class="sub">· 16–18 tuổi</span></h2>
+                <span class="level-desc"><i class="fas fa-star" style="color: #facc15;"></i> 4 khóa học</span>
+            </div>
+            <div class="course-grid">
+                <a href="product-detail.html?course=on-thi-tn" class="course-card">
+                    <div class="course-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Ôn thi TN</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B1 · Lớp 12</div>
+                    <p>Bám sát cấu trúc đề thi tốt nghiệp, chiến thuật làm bài, ôn tập toàn diện.</p>
+                    <div class="meta">
+                        <span class="price">1.600.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=ielts-foundation" class="course-card">
+                    <span class="badge">Phổ biến</span>
+                    <div class="course-icon"><i class="fab fa-aws"></i></div>
+                    <h4>IELTS Foundation</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B1 · 4.0–5.0</div>
+                    <p>Nắm vững cấu trúc IELTS, làm quen dạng bài, luyện 4 kỹ năng cơ bản.</p>
+                    <div class="meta">
+                        <span class="price">1.800.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=ielts-intensive" class="course-card">
+                    <div class="course-icon"><i class="fas fa-rocket"></i></div>
+                    <h4>IELTS Intensive</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B2 · 5.0–6.5</div>
+                    <p>Luyện đề chuyên sâu, chiến thuật từng kỹ năng, tăng band điểm nhanh.</p>
+                    <div class="meta">
+                        <span class="price">2.200.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=group-debate" class="course-card">
+                    <div class="course-icon"><i class="fas fa-users"></i></div>
+                    <h4>Group Debate</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B1-B2 · Lớp 10–12</div>
+                    <p>Thảo luận nhóm, tranh biện, phản biện, nâng cao tư duy và phản xạ.</p>
+                    <div class="meta">
+                        <span class="price">1.450.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SECTION 4: NGƯỜI ĐI LÀM (3 khóa học con) ====== -->
+    <section class="level-section" id="nguoi-di-lam">
+        <div class="container">
+            <div class="level-header">
+                <div class="icon-badge"><i class="fas fa-briefcase"></i></div>
+                <h2>Người đi làm <span class="sub">· 18+ tuổi</span></h2>
+                <span class="level-desc"><i class="fas fa-star" style="color: #facc15;"></i> 3 khóa học</span>
+            </div>
+            <div class="course-grid">
+                <a href="product-detail.html?course=business-english" class="course-card">
+                    <div class="course-icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Business English</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B1+ · Giao tiếp văn phòng</div>
+                    <p>Email, họp trực tuyến, thuyết trình, đàm phán, từ vựng chuyên ngành.</p>
+                    <div class="meta">
+                        <span class="price">2.200.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=global-comm" class="course-card">
+                    <span class="badge">Mới</span>
+                    <div class="course-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h4>Global Communication</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B2 · Quốc tế</div>
+                    <p>Giao tiếp đa văn hóa, phát âm chuẩn, thuyết trình chuyên nghiệp.</p>
+                    <div class="meta">
+                        <span class="price">2.400.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+
+                <a href="product-detail.html?course=writing-work" class="course-card">
+                    <div class="course-icon"><i class="fas fa-edit"></i></div>
+                    <h4>Writing for Work</h4>
+                    <div class="course-level"><i class="fas fa-signal"></i> B1 · Báo cáo, hợp đồng</div>
+                    <p>Viết báo cáo, biên bản, hợp đồng, email chuyên nghiệp, ngắn gọn.</p>
+                    <div class="meta">
+                        <span class="price">1.900.000₫</span>
+                        <span class="btn-small"><i class="fas fa-arrow-right"></i> Xem chi tiết</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER TƯ VẤN -->
+    <div class="container">
+        <div class="feature-banner">
+            <h3><i class="fas fa-headset"></i> Không biết nên chọn khóa nào?</h3>
+            <p>Nhận tư vấn lộ trình học phù hợp nhất với trình độ và mục tiêu của bạn.</p>
+            <a href="#" class="btn">Đăng ký tư vấn miễn phí <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+ <footer class="footer">
+  <div class="footer__grid">
+
+    <div class="footer__col">
+      <h4>IvyEdu</h4>
+      <ul>
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+        <li><a href="#">Tin tức</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Sản phẩm</h4>
+      <ul>
+        <li><a href="#">Khoá học</a></li>
+        <li><a href="#">Giải pháp giáo dục</a></li>
+        <li><a href="#">Đối tác</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="#">Câu hỏi thường gặp</a></li>
+        <li><a href="#">Chính sách</a></li>
+        <li><a href="#">Điều khoản</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="#">Hotline</a></li>
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Địa chỉ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <div class="footer__map-wrap">
+        <iframe
+          class="footer__map"
+          src="https://www.google.com/maps?q=10.7757177,106.6823607&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Vị trí công ty trên Google Maps">
+        </iframe>
+        <a class="footer__map-link" href="https://maps.app.goo.gl/5dpxp6A7uuXxUA2p8" target="_blank" rel="noopener noreferrer">
+          Mở trong Google Maps ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Kênh truyền thông</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Youtube</a></li>
+        <li><a href="#">TikTok</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p>© 2026 IvyEdu. All rights reserved.</p>
+    <p>Sử dụng nội dung ở trang này và dịch vụ tại IvyEdu có nghĩa là bạn đồng ý với <a href="#">Thỏa thuận sử dụng</a> và <a href="#">Chính sách bảo mật</a> của chúng tôi.</p>
+  </div>
+</footer>
+
+</body>
+</html>

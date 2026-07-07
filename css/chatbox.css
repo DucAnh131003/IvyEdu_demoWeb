@@ -1,0 +1,397 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* === MÀU SẮC THƯƠNG HIỆU === */
+:root {
+    --primary-blue: #0056A7;
+    --primary-blue-dark: #004A8F;
+    --primary-teal: #00B4A0;
+    --primary-teal-light: #E6F7F5;
+    --primary-gradient: linear-gradient(135deg, #0056A7 0%, #00B4A0 100%);
+    --primary-gradient-hover: linear-gradient(135deg, #004A8F 0%, #009B8D 100%);
+    --shadow-color: rgba(0, 86, 167, 0.3);
+    --text-dark: #1a1a2e;
+    --text-gray: #6b7280;
+    --bg-light: #f8fafc;
+}
+
+/* === CONTACT WRAPPER === */
+#contact-wrapper {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* === NÚT BẤM VỚI HIỆU ỨNG PULSE === */
+.contact-toggle-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 25px var(--shadow-color);
+    font-size: 28px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-toggle-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 35px rgba(0, 86, 167, 0.5);
+}
+
+/* Hiệu ứng pulse ring */
+.pulse-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    border: 3px solid #00B4A0;
+    animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* === PANEL THÔNG TIN === */
+.contact-panel {
+    width: 380px;
+    max-width: 92vw;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 16px;
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-panel.active {
+    display: flex;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* === HEADER === */
+.panel-header {
+    background: var(--primary-gradient);
+    color: #fff;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng background decoration */
+.panel-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.panel-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60%;
+    left: -10%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    background: #fff;
+    padding: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.company-logo:hover {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.sub-text {
+    font-size: 12px;
+    opacity: 0.85;
+    font-weight: 400;
+}
+
+.panel-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(4px);
+}
+
+.panel-close-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: rotate(90deg);
+}
+
+/* === BODY === */
+.panel-body {
+    padding: 24px;
+    background: var(--bg-light);
+}
+
+/* Giới thiệu công ty */
+.company-intro {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.company-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.company-name i {
+    color: var(--primary-teal);
+}
+
+.company-slogan {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin-top: 4px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Divider */
+.divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--primary-teal), var(--primary-blue), transparent);
+    margin: 16px 0 20px 0;
+    opacity: 0.3;
+}
+
+/* Danh sách liên hệ */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.contact-item:hover {
+    transform: translateX(6px);
+    border-color: var(--primary-teal);
+    box-shadow: 0 4px 16px rgba(0, 180, 160, 0.15);
+}
+
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+}
+
+.contact-item:hover .icon-wrapper {
+    transform: scale(1.05);
+}
+
+.icon-wrapper.phone {
+    background: linear-gradient(135deg, #0056A7, #0084ff);
+}
+.icon-wrapper.email {
+    background: linear-gradient(135deg, #00B4A0, #00d4c0);
+}
+.icon-wrapper.facebook {
+    background: linear-gradient(135deg, #1877f2, #3b82f6);
+}
+.icon-wrapper.zalo {
+    background: linear-gradient(135deg, #0068FF, #4a9eff);
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.contact-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-content a {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-content a:hover {
+    color: var(--primary-blue);
+}
+
+/* Footer */
+.panel-footer {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.panel-footer span {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+    #contact-wrapper {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .contact-panel {
+        width: 94vw;
+        border-radius: 16px;
+    }
+
+    .contact-toggle-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+    }
+
+    .panel-header {
+        padding: 14px 16px;
+    }
+
+    .company-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .panel-body {
+        padding: 18px 16px;
+    }
+
+    .company-name {
+        font-size: 17px;
+    }
+
+    .contact-item {
+        padding: 10px 14px;
+    }
+
+    .icon-wrapper {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .contact-content a {
+        font-size: 14px;
+    }
+}

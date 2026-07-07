@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết khóa học | EngZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f9ff;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #0b2a4e, #123b66);
+            color: white;
+            padding: 16px 0;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.25);
+            border-bottom: 4px solid #facc15;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .logo span {
+            color: #facc15;
+        }
+        .logo .tagline {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+        .nav a:hover {
+            color: #facc15;
+            border-bottom-color: #facc15;
+        }
+        .nav a i {
+            margin-right: 6px;
+        }
+
+        .breadcrumb {
+            padding: 16px 0 8px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        .breadcrumb a {
+            color: #0b2a4e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover {
+            color: #facc15;
+        }
+        .breadcrumb i {
+            margin: 0 8px;
+            font-size: 0.7rem;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            margin: 16px 0 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .product-gallery .main-image {
+            background: linear-gradient(135deg, #dce5f5, #eef4ff);
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #e9eff6;
+        }
+
+        .product-gallery .main-image i {
+            font-size: 6rem;
+            color: #0b2a4e;
+            margin-bottom: 16px;
+        }
+
+        .product-gallery .main-image .level-badge {
+            background: #facc15;
+            color: #0b2a4e;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .product-gallery .thumbnails {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .product-gallery .thumbnails .thumb {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 16px 8px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .product-gallery .thumbnails .thumb:hover {
+            border-color: #facc15;
+            background: #eef4ff;
+        }
+
+        .product-gallery .thumbnails .thumb i {
+            font-size: 1.8rem;
+            color: #0b2a4e;
+        }
+
+        .product-gallery .thumbnails .thumb span {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 4px;
+            color: #475569;
+        }
+
+        .schedule-sidebar {
+            background: #f8fcff;
+            border-radius: 20px;
+            padding: 24px;
+            border: 2px solid #e9eff6;
+            margin-top: 4px;
+        }
+
+        .schedule-sidebar h3 {
+            font-size: 1.2rem;
+            color: #0b2a4e;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .schedule-sidebar h3 i {
+            color: #facc15;
+        }
+
+        .schedule-item {
+            background: white;
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border-left: 4px solid #facc15;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .schedule-item .class-date {
+            font-weight: 700;
+            color: #0b2a4e;
+            font-size: 1rem;
+        }
+
+        .schedule-item .class-time {
+            color: #64748b;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .schedule-item .class-time i {
+            color: #facc15;
+            width: 16px;
+        }
+
+        .schedule-item .status {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .status.available {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status.limited {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status.full {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .schedule-sidebar .view-all {
+            display: block;
+            text-align: center;
+            color: #0b2a4e;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 12px;
+            background: white;
+            transition: 0.2s;
+            margin-top: 4px;
+        }
+
+        .schedule-sidebar .view-all:hover {
+            background: #facc15;
+            color: #0b2a4e;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info .course-category {
+            color: #0b2a4e;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: #eef4ff;
+            padding: 4px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .product-info h1 {
+            font-size: 2.4rem;
+            color: #0b2a4e;
+            margin-bottom: 4px;
+        }
+
+        .product-info .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .product-info .rating {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .product-info .rating .stars {
+            color: #facc15;
+            font-size: 1.2rem;
+        }
+
+        .product-info .rating .review-count {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .product-info .price-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f8fcff;
+            border-radius: 16px;
+        }
+
+        .product-info .price-box .current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b2a4e;
+        }
+
+        .product-info .price-box .original-price {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            text-decoration: line-through;
+        }
+
+        .product-info .price-box .discount {
+            background: #dc2626;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .product-info .description {
+            color: #334155;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .product-info .features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .product-info .features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .product-info .features li i {
+            color: #facc15;
+            width: 24px;
+            text-align: center;
+        }
+
+        .product-info .actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .product-info .actions .btn-primary {
+            background: #0b2a4e;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .product-info .actions .btn-primary:hover {
+            background: #facc15;
+            color: #0b2a4e;
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.3);
+        }
+
+        .product-info .actions .btn-secondary {
+            background: white;
+            color: #0b2a4e;
+            border: 2px solid #0b2a4e;
+            padding: 16px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .product-info .actions .btn-secondary:hover {
+            background: #0b2a4e;
+            color: white;
+        }
+
+        .tabs-section {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid #eef4ff;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .tabs-nav button {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tabs-nav button:hover {
+            color: #0b2a4e;
+        }
+
+        .tabs-nav button.active {
+            color: #0b2a4e;
+            border-bottom-color: #facc15;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 8px 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            color: #0b2a4e;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .tab-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tab-content ul li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .tab-content ul li i {
+            color: #facc15;
+            margin-top: 4px;
+            width: 20px;
+        }
+
+        .tab-content .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .tab-content .schedule-grid .item {
+            background: #f8fcff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .teacher-card {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            background: #f8fcff;
+            padding: 24px;
+            border-radius: 20px;
+            margin-top: 12px;
+        }
+
+        .teacher-card .avatar {
+            width: 80px;
+            height: 80px;
+            background: #0b2a4e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .teacher-card .info h4 {
+            font-size: 1.2rem;
+            color: #0b2a4e;
+        }
+
+        .teacher-card .info .title {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .teacher-card .info p {
+            color: #475569;
+            margin-top: 4px;
+        }
+
+        .review-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .review-item .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .review-item .review-header .name {
+            font-weight: 600;
+            color: #0b2a4e;
+        }
+
+        .review-item .review-header .date {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .review-item .review-stars {
+            color: #facc15;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .review-item .review-text {
+            color: #475569;
+        }
+
+        .related-section {
+            margin: 40px 0 32px;
+        }
+
+        .related-section h2 {
+            font-size: 1.8rem;
+            color: #0b2a4e;
+            margin-bottom: 24px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .related-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f8;
+            transition: 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            border-color: #facc15;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-card .icon {
+            font-size: 2rem;
+            color: #0b2a4e;
+            margin-bottom: 8px;
+        }
+
+        .related-card h4 {
+            font-size: 1.1rem;
+            color: #0b2a4e;
+            margin-bottom: 4px;
+        }
+
+        .related-card .price {
+            font-weight: 700;
+            color: #0b2a4e;
+        }
+
+        .footer {
+            margin-top: 48px;
+            background: #0b2a4e;
+            color: #cbd5e1;
+            padding: 28px 0 20px;
+            border-radius: 40px 40px 0 0;
+        }
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+        .footer-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #facc15;
+        }
+        .footer .copy {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 968px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+            .product-gallery .main-image {
+                min-height: 200px;
+            }
+            .product-gallery .main-image i {
+                font-size: 4rem;
+            }
+            .tabs-section {
+                padding: 24px;
+            }
+            .tab-content .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            .teacher-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav a {
+                margin-left: 0;
+                margin-right: 16px;
+                display: inline-block;
+                margin-top: 4px;
+            }
+            .product-info h1 {
+                font-size: 1.8rem;
+            }
+            .product-info .actions {
+                flex-direction: column;
+            }
+            .product-info .actions .btn-primary,
+            .product-info .actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .tabs-nav {
+                flex-wrap: wrap;
+            }
+            .tabs-nav button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            .related-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1> <img id="logo" style="width: 10%; height: auto;" src="images/logo.png" alt="IVYEDU Logo"><span>IVY</span>EDU</h1>
+                <div class="tagline"><i class="fas fa-globe-asia"></i> Học tiếng Anh · 4 cấp độ</div>
+            </div>
+            <div class="nav">
+                <a href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="index.html#tieu-hoc"><i class="fas fa-book-open"></i> Khóa học</a>
+                <a href="#"><i class="fas fa-user-graduate"></i> Học viên</a>
+                <a href="#"><i class="fas fa-phone-alt"></i> Liên hệ</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Trang chủ</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="Course.html#tieu-hoc">Khóa học</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="breadcrumb-level" style="color: #0b2a4e; font-weight: 600;">Đang tải...</span>
+        </div>
+
+        <div class="product-detail">
+            <div class="product-gallery">
+                <div class="main-image">
+                    <i id="course-icon" class="fas fa-book-open"></i>
+                    <span class="level-badge" id="level-badge"><i class="fas fa-star"></i> Đang tải...</span>
+                    <p style="margin-top: 12px; color: #475569; font-weight: 500;" id="course-subtitle">Đang tải thông tin...</p>
+                </div>
+                <div class="thumbnails">
+                    <div class="thumb"><i class="fas fa-pencil-alt"></i><span>Bài tập</span></div>
+                    <div class="thumb"><i class="fas fa-headphones"></i><span>Nghe</span></div>
+                    <div class="thumb"><i class="fas fa-users"></i><span>Nhóm</span></div>
+                    <div class="thumb"><i class="fas fa-certificate"></i><span>Chứng chỉ</span></div>
+                </div>
+
+                <!-- LỊCH KHAI GIẢNG (được tạo động từ dữ liệu) -->
+                <div class="schedule-sidebar" id="schedule-sidebar">
+                    <h3><i class="fas fa-calendar-alt"></i> Lịch khai giảng</h3>
+                    <div id="schedule-list">
+                        <!-- Sẽ được JavaScript tạo động -->
+                    </div>
+                    <a href="#" class="view-all"><i class="fas fa-arrow-right"></i> Xem tất cả lịch học</a>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <span class="course-category" id="course-category"><i class="fas fa-child"></i> Đang tải...</span>
+                <h1 id="course-name">Đang tải...</h1>
+                <div class="subtitle" id="course-subtitle-2">Đang tải thông tin...</div>
+
+                <div class="rating">
+                    <div class="stars" id="course-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="review-count" id="review-count">(0 đánh giá)</span>
+                    <span style="color: #64748b;">|</span>
+                    <span style="color: #64748b;" id="student-count"><i class="fas fa-user-graduate"></i> 0 học viên</span>
+                </div>
+
+                <div class="price-box">
+                    <span class="current-price" id="current-price">0₫</span>
+                    <span class="original-price" id="original-price">0₫</span>
+                    <span class="discount" id="discount-badge">-0%</span>
+                </div>
+
+                <p class="description" id="course-description">Đang tải thông tin...</p>
+
+                <ul class="features" id="course-features">
+                    <li><i class="fas fa-check-circle"></i> Đang tải...</li>
+                </ul>
+
+                <div class="actions">
+                    <a href="#" class="btn-primary"><i class="fas fa-cart-plus"></i> Đăng ký ngay</a>
+                    <a href="#" class="btn-secondary"><i class="fas fa-heart"></i> Yêu thích</a>
+                </div>
+
+                <div style="margin-top: 16px; display: flex; gap: 20px; font-size: 0.9rem; color: #64748b;">
+                    <span><i class="fas fa-shield-alt"></i> Bảo mật thanh toán</span>
+                    <span><i class="fas fa-undo"></i> Hủy đăng ký trong 7 ngày</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabs-section">
+            <div class="tabs-nav">
+                <button class="active" data-tab="tab1">Mô tả</button>
+                <button data-tab="tab2">Lộ trình học</button>
+                <button data-tab="tab3">Giáo viên</button>
+                <button data-tab="tab4">Đánh giá</button>
+            </div>
+
+            <div id="tab1" class="tab-content active">
+                <h3>Chi tiết khóa học</h3>
+                <div id="tab-description"></div>
+            </div>
+
+            <div id="tab2" class="tab-content">
+                <h3>Lộ trình 12 tuần</h3>
+                <div class="schedule-grid" id="schedule-grid"></div>
+            </div>
+
+            <div id="tab3" class="tab-content">
+                <h3>Giáo viên hướng dẫn</h3>
+                <div id="teacher-info"></div>
+            </div>
+
+            <div id="tab4" class="tab-content">
+                <h3>Đánh giá từ học viên</h3>
+                <div id="reviews-container"></div>
+            </div>
+        </div>
+
+        <section class="related-section">
+            <h2><i class="fas fa-link" style="color: #facc15;"></i> Các khóa học liên quan</h2>
+            <div class="related-grid" id="related-grid"></div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+                <a href="#"><i class="fas fa-shield-alt"></i> Chính sách</a>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="#"><i class="fas fa-envelope"></i> Liên hệ</a>
+            </div>
+            <div class="copy">
+                <i class="far fa-copyright"></i> 2026 EngZone · Trang chi tiết khóa học
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        // DỮ LIỆU KHÓA HỌC (14+ khóa)
+        // ============================================================
+        const courseData = {
+            'starters': {
+                id: 'starters',
+                name: 'Starters',
+                category: 'Tiểu học',
+                categoryIcon: 'fa-child',
+                level: 'Pre-A1',
+                age: '6–7 tuổi',
+                subtitle: 'Bảng chữ cái, từ vựng cơ bản, giới thiệu bản thân',
+                price: '850.000₫',
+                originalPrice: '1.100.000₫',
+                discount: '-23%',
+                stars: 4.5,
+                reviews: 18,
+                students: 89,
+                icon: 'fa-pencil-alt',
+                description: 'Khóa học Starters giúp trẻ làm quen với tiếng Anh một cách tự nhiên và vui nhộn. Bé sẽ học bảng chữ cái, số đếm, màu sắc, và cách giới thiệu bản thân.',
+                features: [
+                    '36 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 6–8 học viên, tương tác tối đa',
+                    'Giáo viên bản ngữ có chứng chỉ TESOL',
+                    'Tặng sách bài tập & tài liệu số',
+                    'Bảo lưu kết quả, học lại miễn phí nếu chưa đạt'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Bảng chữ cái, số đếm, màu sắc' },
+                    { week: 'Tuần 3–4', content: 'Từ vựng chủ đề: gia đình, trường học' },
+                    { week: 'Tuần 5–6', content: 'Giới thiệu bản thân, hỏi đáp cơ bản' },
+                    { week: 'Tuần 7–8', content: 'Động vật, đồ ăn, đồ chơi' },
+                    { week: 'Tuần 9–10', content: 'Luyện nghe qua bài hát và câu chuyện' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra cuối khóa' }
+                ],
+                teacher: {
+                    name: 'Ms. Emily Parker',
+                    title: 'Giáo viên tiếng Anh · 6 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'Chuyên gia giảng dạy trẻ em'],
+                    desc: 'Phong cách vui nhộn, gần gũi, yêu trẻ em.'
+                },
+                reviews: [
+                    { name: 'Chị Lan Anh (phụ huynh bé Bảo)', date: '20/06/2026', stars: 5, text: 'Con tôi rất thích học cô Emily.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4, 6', time: '18:30 - 19:30', status: 'available', spots: 4 },
+                    { date: '25/08/2026', days: 'Thứ 3, 5, 7', time: '19:00 - 20:00', status: 'limited', spots: 2 },
+                    { date: '05/09/2026', days: 'Thứ 2, 4', time: '20:00 - 21:00', status: 'available', spots: 6 }
+                ]
+            },
+            'movers': {
+                id: 'movers',
+                name: 'Movers',
+                category: 'Tiểu học',
+                categoryIcon: 'fa-child',
+                level: 'A1',
+                age: '8–9 tuổi',
+                subtitle: 'Mở rộng từ vựng, đọc hiểu đoạn ngắn, nghe và kể lại',
+                price: '950.000₫',
+                originalPrice: '1.200.000₫',
+                discount: '-21%',
+                stars: 4.5,
+                reviews: 22,
+                students: 112,
+                icon: 'fa-book-open',
+                description: 'Khóa học Movers giúp trẻ mở rộng vốn từ vựng và cấu trúc câu.',
+                features: [
+                    '36 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 6–8 học viên, tương tác tối đa',
+                    'Giáo viên bản ngữ có chứng chỉ TESOL',
+                    'Tặng sách bài tập & tài liệu số'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Ôn tập từ vựng Starters + mở rộng' },
+                    { week: 'Tuần 3–4', content: 'Thì hiện tại tiếp diễn, câu hỏi WH' },
+                    { week: 'Tuần 5–6', content: 'Đọc hiểu đoạn văn ngắn' },
+                    { week: 'Tuần 7–8', content: 'Luyện nghe và kể lại câu chuyện' },
+                    { week: 'Tuần 9–10', content: 'Viết câu hoàn chỉnh, đoạn văn ngắn' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra cuối khóa' }
+                ],
+                teacher: {
+                    name: 'Ms. Sarah Johnson',
+                    title: 'Giáo viên tiếng Anh · 8 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'CELTA'],
+                    desc: 'Phong cách dạy sáng tạo, giúp trẻ yêu thích tiếng Anh.'
+                },
+                reviews: [
+                    { name: 'Chị Hà (phụ huynh bé Nam)', date: '18/06/2026', stars: 5, text: 'Con tôi đọc hiểu tốt hơn rất nhiều.' }
+                ],
+                schedules: [
+                    { date: '12/08/2026', days: 'Thứ 2, 4, 6', time: '17:30 - 18:30', status: 'available', spots: 5 },
+                    { date: '28/08/2026', days: 'Thứ 3, 5, 7', time: '18:00 - 19:00', status: 'full', spots: 0 },
+                    { date: '08/09/2026', days: 'Thứ 2, 4', time: '19:30 - 20:30', status: 'available', spots: 7 }
+                ]
+            },
+            'flyers': {
+                id: 'flyers',
+                name: 'Flyers',
+                category: 'Tiểu học',
+                categoryIcon: 'fa-child',
+                level: 'A2',
+                age: '10–11 tuổi',
+                subtitle: 'Giao tiếp tự tin, viết đoạn văn, kể chuyện bằng tiếng Anh',
+                price: '1.050.000₫',
+                originalPrice: '1.400.000₫',
+                discount: '-25%',
+                stars: 5,
+                reviews: 24,
+                students: 156,
+                icon: 'fa-comments',
+                description: 'Khóa học Flyers giúp trẻ tự tin giao tiếp, viết đoạn văn ngắn, kể chuyện bằng tiếng Anh.',
+                features: [
+                    '36 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 6–8 học viên, tương tác tối đa',
+                    'Giáo viên bản ngữ có chứng chỉ TESOL',
+                    'Tặng sách bài tập & tài liệu số'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Ôn tập Movers + từ vựng chủ đề mới' },
+                    { week: 'Tuần 3–4', content: 'Thì quá khứ, tương lai đơn' },
+                    { week: 'Tuần 5–6', content: 'Đọc hiểu & kỹ năng viết đoạn văn' },
+                    { week: 'Tuần 7–8', content: 'Luyện nghe & phát âm chuẩn' },
+                    { week: 'Tuần 9–10', content: 'Kể chuyện & thuyết trình ngắn' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & thi thử Flyers' }
+                ],
+                teacher: {
+                    name: 'Ms. Sarah Johnson',
+                    title: 'Giáo viên tiếng Anh · 8 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'CELTA'],
+                    desc: 'Phong cách vui nhộn, gần gũi, yêu trẻ em.'
+                },
+                reviews: [
+                    { name: 'Chị Mai Anh (phụ huynh bé Minh)', date: '15/06/2026', stars: 5, text: 'Con tôi tiến bộ rõ rệt sau 8 tuần.' }
+                ],
+                schedules: [
+                    { date: '15/08/2026', days: 'Thứ 2, 4, 6', time: '19:00 - 20:00', status: 'available', spots: 3 },
+                    { date: '30/08/2026', days: 'Thứ 3, 5, 7', time: '18:30 - 19:30', status: 'limited', spots: 2 },
+                    { date: '10/09/2026', days: 'Thứ 2, 4', time: '20:30 - 21:30', status: 'available', spots: 8 }
+                ]
+            },
+            'summer-camp': {
+                id: 'summer-camp',
+                name: 'Summer Camp',
+                category: 'Tiểu học',
+                categoryIcon: 'fa-child',
+                level: 'A1-A2',
+                age: 'Hè 2026',
+                subtitle: 'Học qua trò chơi, dự án nhóm, kỹ năng mềm và tiếng Anh giao tiếp',
+                price: '1.200.000₫',
+                originalPrice: '1.500.000₫',
+                discount: '-20%',
+                stars: 4.5,
+                reviews: 15,
+                students: 78,
+                icon: 'fa-gamepad',
+                description: 'Khóa học hè đặc biệt với phương pháp học qua trò chơi và dự án nhóm.',
+                features: [
+                    '24 buổi học (4 buổi/tuần, 90 phút/buổi)',
+                    'Lớp 8–10 học viên, hoạt động nhóm',
+                    'Giáo viên bản ngữ + trợ giảng',
+                    'Hoạt động ngoại khóa, dự án nhóm'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Làm quen, trò chơi giới thiệu' },
+                    { week: 'Tuần 3–4', content: 'Chủ đề: Thiên nhiên, động vật' },
+                    { week: 'Tuần 5–6', content: 'Dự án nhóm: Vẽ và thuyết trình' },
+                    { week: 'Tuần 7–8', content: 'Chủ đề: Thành phố, du lịch' },
+                    { week: 'Tuần 9–10', content: 'Hoạt động ngoài trời' },
+                    { week: 'Tuần 11–12', content: 'Tổng kết, biểu diễn' }
+                ],
+                teacher: {
+                    name: 'Mr. David Wilson',
+                    title: 'Giáo viên tiếng Anh · 5 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL'],
+                    desc: 'Năng động, sáng tạo, giỏi tổ chức các hoạt động nhóm.'
+                },
+                reviews: [
+                    { name: 'Chị Hoa (phụ huynh bé Minh)', date: '10/06/2026', stars: 5, text: 'Con tôi rất thích khóa học hè này.' }
+                ],
+                schedules: [
+                    { date: '01/06/2026', days: 'Thứ 2-6', time: '08:00 - 09:30', status: 'full', spots: 0 },
+                    { date: '15/06/2026', days: 'Thứ 2-6', time: '10:00 - 11:30', status: 'limited', spots: 3 },
+                    { date: '01/07/2026', days: 'Thứ 2-6', time: '14:00 - 15:30', status: 'available', spots: 10 }
+                ]
+            },
+            'foundation-a': {
+                id: 'foundation-a',
+                name: 'Foundation A',
+                category: 'THCS',
+                categoryIcon: 'fa-user-graduate',
+                level: 'A1',
+                age: 'Lớp 6',
+                subtitle: 'Ngữ pháp nền tảng, thì hiện tại, quá khứ, từ vựng theo chủ đề',
+                price: '1.100.000₫',
+                originalPrice: '1.300.000₫',
+                discount: '-15%',
+                stars: 4.5,
+                reviews: 20,
+                students: 95,
+                icon: 'fa-layer-group',
+                description: 'Khóa học Foundation A giúp học sinh lớp 6 xây dựng nền tảng ngữ pháp vững chắc.',
+                features: [
+                    '40 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 8–10 học viên',
+                    'Giáo viên có chứng chỉ quốc tế',
+                    'Tài liệu học tập đầy đủ',
+                    'Kiểm tra định kỳ hàng tháng'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Thì hiện tại đơn, hiện tại tiếp diễn' },
+                    { week: 'Tuần 3–4', content: 'Từ vựng chủ đề: Trường học, gia đình' },
+                    { week: 'Tuần 5–6', content: 'Thì quá khứ đơn, câu phủ định' },
+                    { week: 'Tuần 7–8', content: 'Đọc hiểu cơ bản' },
+                    { week: 'Tuần 9–10', content: 'Viết câu, đoạn văn ngắn' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra' }
+                ],
+                teacher: {
+                    name: 'Ms. Lisa Chen',
+                    title: 'Giáo viên tiếng Anh · 7 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'CELTA'],
+                    desc: 'Tận tâm, kiên nhẫn, giúp học sinh xây dựng nền tảng vững chắc.'
+                },
+                reviews: [
+                    { name: 'Chị Lan (phụ huynh bé Hùng)', date: '15/06/2026', stars: 5, text: 'Con tôi tiến bộ vượt bậc.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4, 6', time: '18:30 - 19:30', status: 'available', spots: 4 },
+                    { date: '25/08/2026', days: 'Thứ 3, 5, 7', time: '19:00 - 20:00', status: 'limited', spots: 2 },
+                    { date: '05/09/2026', days: 'Thứ 2, 4', time: '20:00 - 21:00', status: 'available', spots: 6 }
+                ]
+            },
+            'foundation-b': {
+                id: 'foundation-b',
+                name: 'Foundation B',
+                category: 'THCS',
+                categoryIcon: 'fa-user-graduate',
+                level: 'A2',
+                age: 'Lớp 7–8',
+                subtitle: 'Mở rộng ngữ pháp, câu điều kiện, câu bị động, luyện đọc hiểu',
+                price: '1.250.000₫',
+                originalPrice: '1.500.000₫',
+                discount: '-17%',
+                stars: 4.5,
+                reviews: 18,
+                students: 88,
+                icon: 'fa-arrow-up',
+                description: 'Khóa học Foundation B dành cho học sinh lớp 7-8, mở rộng kiến thức ngữ pháp.',
+                features: [
+                    '40 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 8–10 học viên',
+                    'Giáo viên có chứng chỉ quốc tế',
+                    'Tài liệu học tập đầy đủ'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Ôn tập Foundation A + mở rộng' },
+                    { week: 'Tuần 3–4', content: 'Câu điều kiện loại 1, 2' },
+                    { week: 'Tuần 5–6', content: 'Câu bị động các thì' },
+                    { week: 'Tuần 7–8', content: 'Đọc hiểu nâng cao' },
+                    { week: 'Tuần 9–10', content: 'Viết đoạn văn, bài luận' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra' }
+                ],
+                teacher: {
+                    name: 'Ms. Lisa Chen',
+                    title: 'Giáo viên tiếng Anh · 7 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'CELTA'],
+                    desc: 'Tận tâm, kiên nhẫn, giúp học sinh xây dựng nền tảng vững chắc.'
+                },
+                reviews: [
+                    { name: 'Chị Mai (phụ huynh bé Hải)', date: '12/06/2026', stars: 5, text: 'Khóa học chất lượng.' }
+                ],
+                schedules: [
+                    { date: '12/08/2026', days: 'Thứ 2, 4, 6', time: '17:30 - 18:30', status: 'available', spots: 5 },
+                    { date: '28/08/2026', days: 'Thứ 3, 5, 7', time: '18:00 - 19:00', status: 'full', spots: 0 }
+                ]
+            },
+            'writing-reading': {
+                id: 'writing-reading',
+                name: 'Writing & Reading',
+                category: 'THCS',
+                categoryIcon: 'fa-user-graduate',
+                level: 'A2-B1',
+                age: 'Lớp 8–9',
+                subtitle: 'Luyện viết đoạn văn, bài luận, đọc hiểu và phân tích văn bản',
+                price: '1.350.000₫',
+                originalPrice: '1.600.000₫',
+                discount: '-16%',
+                stars: 5,
+                reviews: 16,
+                students: 72,
+                icon: 'fa-pen-fancy',
+                description: 'Khóa học chuyên sâu về kỹ năng đọc và viết cho học sinh lớp 8-9.',
+                features: [
+                    '36 buổi học (3 buổi/tuần, 75 phút/buổi)',
+                    'Lớp 8–10 học viên',
+                    'Giáo viên chuyên môn cao',
+                    'Tài liệu đọc phong phú'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Cấu trúc đoạn văn' },
+                    { week: 'Tuần 3–4', content: 'Viết đoạn văn miêu tả, kể chuyện' },
+                    { week: 'Tuần 5–6', content: 'Đọc hiểu và phân tích' },
+                    { week: 'Tuần 7–8', content: 'Viết bài luận cơ bản' },
+                    { week: 'Tuần 9–10', content: 'Đọc và phân tích văn bản nâng cao' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra' }
+                ],
+                teacher: {
+                    name: 'Mr. Michael Brown',
+                    title: 'Giáo viên tiếng Anh · 10 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'MA in English Literature'],
+                    desc: 'Chuyên sâu về kỹ năng đọc và viết.'
+                },
+                reviews: [
+                    { name: 'Chị Hạnh (phụ huynh bé Minh)', date: '14/06/2026', stars: 5, text: 'Con tôi viết văn tốt hơn nhiều.' }
+                ],
+                schedules: [
+                    { date: '15/08/2026', days: 'Thứ 2, 4, 6', time: '19:00 - 20:15', status: 'available', spots: 3 },
+                    { date: '30/08/2026', days: 'Thứ 3, 5, 7', time: '18:30 - 19:45', status: 'limited', spots: 2 }
+                ]
+            },
+            'speaking-booster': {
+                id: 'speaking-booster',
+                name: 'Speaking Booster',
+                category: 'THCS',
+                categoryIcon: 'fa-user-graduate',
+                level: 'A2-B1',
+                age: 'Lớp 9',
+                subtitle: 'Phản xạ giao tiếp, thuyết trình ngắn, luyện phát âm chuẩn',
+                price: '1.280.000₫',
+                originalPrice: '1.500.000₫',
+                discount: '-15%',
+                stars: 4.5,
+                reviews: 14,
+                students: 65,
+                icon: 'fa-microphone-alt',
+                description: 'Khóa học Speaking Booster giúp học sinh lớp 9 tự tin giao tiếp tiếng Anh.',
+                features: [
+                    '36 buổi học (3 buổi/tuần, 60 phút/buổi)',
+                    'Lớp 6–8 học viên',
+                    'Giáo viên bản ngữ',
+                    'Luyện phát âm chuẩn'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Phát âm chuẩn, ngữ điệu' },
+                    { week: 'Tuần 3–4', content: 'Chủ đề: Bản thân, gia đình' },
+                    { week: 'Tuần 5–6', content: 'Chủ đề: Trường học, bạn bè' },
+                    { week: 'Tuần 7–8', content: 'Thuyết trình ngắn' },
+                    { week: 'Tuần 9–10', content: 'Phản xạ giao tiếp' },
+                    { week: 'Tuần 11–12', content: 'Ôn tập & kiểm tra' }
+                ],
+                teacher: {
+                    name: 'Ms. Emma Watson',
+                    title: 'Giáo viên tiếng Anh · 6 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL'],
+                    desc: 'Năng động, nhiệt tình, giúp học sinh tự tin giao tiếp.'
+                },
+                reviews: [
+                    { name: 'Chị Thảo (phụ huynh bé Hùng)', date: '10/06/2026', stars: 5, text: 'Con tôi tự tin hơn hẳn.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4, 6', time: '18:30 - 19:30', status: 'available', spots: 4 }
+                ]
+            },
+            'on-thi-tn': {
+                id: 'on-thi-tn',
+                name: 'Ôn thi TN',
+                category: 'THPT',
+                categoryIcon: 'fa-school',
+                level: 'B1',
+                age: 'Lớp 12',
+                subtitle: 'Bám sát cấu trúc đề thi tốt nghiệp, chiến thuật làm bài',
+                price: '1.600.000₫',
+                originalPrice: '1.900.000₫',
+                discount: '-16%',
+                stars: 4.5,
+                reviews: 25,
+                students: 120,
+                icon: 'fa-graduation-cap',
+                description: 'Khóa học ôn thi tốt nghiệp THPT môn tiếng Anh.',
+                features: [
+                    '48 buổi học (4 buổi/tuần, 75 phút/buổi)',
+                    'Lớp 10–12 học viên',
+                    'Giáo viên luyện thi nhiều năm kinh nghiệm',
+                    '6 bài thi thử có chữa chi tiết'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Ôn tập toàn bộ ngữ pháp' },
+                    { week: 'Tuần 3–4', content: 'Từ vựng theo chủ đề' },
+                    { week: 'Tuần 5–8', content: 'Kỹ năng đọc hiểu' },
+                    { week: 'Tuần 9–10', content: 'Kỹ năng viết' },
+                    { week: 'Tuần 11–12', content: 'Chiến thuật làm bài' }
+                ],
+                teacher: {
+                    name: 'Mr. Phạm Văn Hùng',
+                    title: 'Giáo viên tiếng Anh · 12 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL'],
+                    desc: 'Chuyên ôn thi tốt nghiệp và đại học.'
+                },
+                reviews: [
+                    { name: 'Bạn Minh (học sinh)', date: '20/06/2026', stars: 5, text: 'Thầy Hùng dạy rất dễ hiểu.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4, 6', time: '19:00 - 20:15', status: 'available', spots: 3 },
+                    { date: '25/08/2026', days: 'Thứ 3, 5, 7', time: '18:30 - 19:45', status: 'limited', spots: 2 }
+                ]
+            },
+            'ielts-foundation': {
+                id: 'ielts-foundation',
+                name: 'IELTS Foundation',
+                category: 'THPT',
+                categoryIcon: 'fa-school',
+                level: 'B1',
+                age: '4.0–5.0',
+                subtitle: 'Nắm vững cấu trúc IELTS, làm quen dạng bài',
+                price: '1.800.000₫',
+                originalPrice: '2.200.000₫',
+                discount: '-18%',
+                stars: 5,
+                reviews: 30,
+                students: 150,
+                icon: 'fab fa-aws',
+                description: 'Khóa học IELTS Foundation dành cho học sinh bắt đầu làm quen với IELTS.',
+                features: [
+                    '48 buổi học (4 buổi/tuần, 75 phút/buổi)',
+                    'Lớp 10–12 học viên',
+                    'Giáo viên IELTS nhiều năm kinh nghiệm',
+                    'Kiểm tra định kỳ hàng tuần'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Tổng quan về IELTS' },
+                    { week: 'Tuần 3–4', content: 'Kỹ năng Reading cơ bản' },
+                    { week: 'Tuần 5–6', content: 'Kỹ năng Listening cơ bản' },
+                    { week: 'Tuần 7–8', content: 'Kỹ năng Writing cơ bản' },
+                    { week: 'Tuần 9–10', content: 'Kỹ năng Speaking cơ bản' },
+                    { week: 'Tuần 11–12', content: 'Thi thử và chữa chi tiết' }
+                ],
+                teacher: {
+                    name: 'Mr. David Nguyễn',
+                    title: 'Giáo viên IELTS · 8 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'IELTS 8.5'],
+                    desc: 'Chuyên giảng dạy IELTS cho học sinh THPT.'
+                },
+                reviews: [
+                    { name: 'Bạn Hà (học sinh)', date: '22/06/2026', stars: 5, text: 'Thầy David dạy rất cuốn hút.' }
+                ],
+                schedules: [
+                    { date: '12/08/2026', days: 'Thứ 2, 4, 6', time: '17:30 - 18:45', status: 'available', spots: 5 },
+                    { date: '28/08/2026', days: 'Thứ 3, 5, 7', time: '18:00 - 19:15', status: 'full', spots: 0 }
+                ]
+            },
+            'ielts-intensive': {
+                id: 'ielts-intensive',
+                name: 'IELTS Intensive',
+                category: 'THPT',
+                categoryIcon: 'fa-school',
+                level: 'B2',
+                age: '5.0–6.5',
+                subtitle: 'Luyện đề chuyên sâu, tăng band điểm nhanh',
+                price: '2.200.000₫',
+                originalPrice: '2.800.000₫',
+                discount: '-21%',
+                stars: 5,
+                reviews: 28,
+                students: 135,
+                icon: 'fa-rocket',
+                description: 'Khóa học IELTS Intensive dành cho học sinh đã có nền tảng và muốn tăng band điểm nhanh.',
+                features: [
+                    '40 buổi học (4 buổi/tuần, 90 phút/buổi)',
+                    'Lớp 8–10 học viên',
+                    'Giáo viên IELTS 8.0+',
+                    'Chữa bài chi tiết từng học viên'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Đánh giá trình độ, chiến lược học' },
+                    { week: 'Tuần 3–6', content: 'Luyện chuyên sâu Reading & Listening' },
+                    { week: 'Tuần 7–10', content: 'Luyện chuyên sâu Writing & Speaking' },
+                    { week: 'Tuần 11–12', content: 'Thi thử và tối ưu hóa điểm số' }
+                ],
+                teacher: {
+                    name: 'Mr. David Nguyễn',
+                    title: 'Giáo viên IELTS · 8 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'IELTS 8.5'],
+                    desc: 'Chuyên luyện thi IELTS cấp tốc.'
+                },
+                reviews: [
+                    { name: 'Bạn Trang (học sinh)', date: '25/06/2026', stars: 5, text: 'Khóa học giúp mình tăng từ 5.0 lên 6.5.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4, 6', time: '19:00 - 20:30', status: 'available', spots: 3 }
+                ]
+            },
+            'group-debate': {
+                id: 'group-debate',
+                name: 'Group Debate',
+                category: 'THPT',
+                categoryIcon: 'fa-school',
+                level: 'B1-B2',
+                age: 'Lớp 10–12',
+                subtitle: 'Thảo luận nhóm, tranh biện, phản biện, nâng cao tư duy',
+                price: '1.450.000₫',
+                originalPrice: '1.700.000₫',
+                discount: '-15%',
+                stars: 4.5,
+                reviews: 12,
+                students: 60,
+                icon: 'fa-users',
+                description: 'Khóa học Group Debate giúp học sinh phát triển kỹ năng thảo luận nhóm, tranh biện và phản biện.',
+                features: [
+                    '32 buổi học (2 buổi/tuần, 90 phút/buổi)',
+                    'Lớp 8–12 học viên',
+                    'Giáo viên bản ngữ',
+                    'Video ghi hình để đánh giá'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Kỹ năng thảo luận nhóm' },
+                    { week: 'Tuần 3–4', content: 'Cấu trúc tranh biện cơ bản' },
+                    { week: 'Tuần 5–6', content: 'Chủ đề: Môi trường, xã hội' },
+                    { week: 'Tuần 7–8', content: 'Chủ đề: Giáo dục, công nghệ' },
+                    { week: 'Tuần 9–10', content: 'Phản biện và lập luận' },
+                    { week: 'Tuần 11–12', content: 'Tranh biện chính thức' }
+                ],
+                teacher: {
+                    name: 'Mr. James Taylor',
+                    title: 'Giáo viên tiếng Anh · 9 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL'],
+                    desc: 'Sôi nổi, cuốn hút, giúp học sinh phát triển tư duy và kỹ năng tranh biện.'
+                },
+                reviews: [
+                    { name: 'Bạn Hạnh (học sinh)', date: '16/06/2026', stars: 5, text: 'Khóa học giúp mình tự tin tranh biện.' }
+                ],
+                schedules: [
+                    { date: '15/08/2026', days: 'Thứ 2, 4', time: '19:00 - 20:30', status: 'available', spots: 6 }
+                ]
+            },
+            'business-english': {
+                id: 'business-english',
+                name: 'Business English',
+                category: 'Người đi làm',
+                categoryIcon: 'fa-briefcase',
+                level: 'B1+',
+                age: 'Giao tiếp văn phòng',
+                subtitle: 'Email, họp trực tuyến, thuyết trình, đàm phán',
+                price: '2.200.000₫',
+                originalPrice: '2.800.000₫',
+                discount: '-21%',
+                stars: 4.5,
+                reviews: 35,
+                students: 180,
+                icon: 'fa-handshake',
+                description: 'Khóa học Business English dành cho người đi làm muốn nâng cao kỹ năng tiếng Anh trong môi trường công sở.',
+                features: [
+                    '36 buổi học (2 buổi/tuần, 90 phút/buổi)',
+                    'Lớp 6–8 học viên',
+                    'Giáo viên bản ngữ có kinh nghiệm doanh nghiệp',
+                    'Tài liệu chuyên ngành'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Email chuyên nghiệp' },
+                    { week: 'Tuần 3–4', content: 'Họp trực tuyến' },
+                    { week: 'Tuần 5–6', content: 'Thuyết trình cơ bản' },
+                    { week: 'Tuần 7–8', content: 'Đàm phán hợp đồng' },
+                    { week: 'Tuần 9–10', content: 'Báo cáo công việc' },
+                    { week: 'Tuần 11–12', content: 'Tổng kết và thực hành' }
+                ],
+                teacher: {
+                    name: 'Ms. Jennifer Lee',
+                    title: 'Giáo viên tiếng Anh · 10 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'MBA'],
+                    desc: 'Nhiều năm kinh nghiệm giảng dạy Business English cho doanh nghiệp.'
+                },
+                reviews: [
+                    { name: 'Anh Minh (nhân viên kinh doanh)', date: '20/06/2026', stars: 5, text: 'Khóa học giúp tôi tự tin hơn trong các cuộc họp.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4', time: '19:00 - 20:30', status: 'available', spots: 4 },
+                    { date: '25/08/2026', days: 'Thứ 3, 5', time: '18:30 - 20:00', status: 'limited', spots: 2 }
+                ]
+            },
+            'global-comm': {
+                id: 'global-comm',
+                name: 'Global Communication',
+                category: 'Người đi làm',
+                categoryIcon: 'fa-briefcase',
+                level: 'B2',
+                age: 'Quốc tế',
+                subtitle: 'Giao tiếp đa văn hóa, phát âm chuẩn, thuyết trình chuyên nghiệp',
+                price: '2.400.000₫',
+                originalPrice: '3.000.000₫',
+                discount: '-20%',
+                stars: 5,
+                reviews: 28,
+                students: 145,
+                icon: 'fa-globe-americas',
+                description: 'Khóa học Global Communication dành cho người đi làm muốn giao tiếp hiệu quả trong môi trường quốc tế.',
+                features: [
+                    '36 buổi học (2 buổi/tuần, 90 phút/buổi)',
+                    'Lớp 6–8 học viên',
+                    'Giáo viên bản ngữ, giàu kinh nghiệm',
+                    'Tình huống thực tế đa quốc gia'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Phát âm chuẩn, ngữ điệu' },
+                    { week: 'Tuần 3–4', content: 'Giao tiếp đa văn hóa cơ bản' },
+                    { week: 'Tuần 5–6', content: 'Thuyết trình chuyên nghiệp' },
+                    { week: 'Tuần 7–8', content: 'Giao tiếp trong hội nghị' },
+                    { week: 'Tuần 9–10', content: 'Thương lượng và thuyết phục' },
+                    { week: 'Tuần 11–12', content: 'Tổng kết và thực hành' }
+                ],
+                teacher: {
+                    name: 'Mr. Robert Chen',
+                    title: 'Giáo viên tiếng Anh · 12 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL'],
+                    desc: 'Nhiều năm kinh nghiệm làm việc và giảng dạy trong môi trường đa văn hóa.'
+                },
+                reviews: [
+                    { name: 'Chị Hà (trưởng phòng kinh doanh)', date: '22/06/2026', stars: 5, text: 'Khóa học giúp tôi tự tin khi giao tiếp với đối tác nước ngoài.' }
+                ],
+                schedules: [
+                    { date: '12/08/2026', days: 'Thứ 2, 4', time: '19:00 - 20:30', status: 'available', spots: 5 }
+                ]
+            },
+            'writing-work': {
+                id: 'writing-work',
+                name: 'Writing for Work',
+                category: 'Người đi làm',
+                categoryIcon: 'fa-briefcase',
+                level: 'B1',
+                age: 'Báo cáo, hợp đồng',
+                subtitle: 'Viết báo cáo, biên bản, hợp đồng, email chuyên nghiệp',
+                price: '1.900.000₫',
+                originalPrice: '2.300.000₫',
+                discount: '-17%',
+                stars: 4.5,
+                reviews: 20,
+                students: 98,
+                icon: 'fa-edit',
+                description: 'Khóa học Writing for Work dành cho người đi làm muốn nâng cao kỹ năng viết trong công việc.',
+                features: [
+                    '32 buổi học (2 buổi/tuần, 75 phút/buổi)',
+                    'Lớp 6–8 học viên',
+                    'Giáo viên có kinh nghiệm doanh nghiệp',
+                    'Chữa bài chi tiết từng học viên'
+                ],
+                schedule: [
+                    { week: 'Tuần 1–2', content: 'Email chuyên nghiệp' },
+                    { week: 'Tuần 3–4', content: 'Biên bản họp, cuộc họp' },
+                    { week: 'Tuần 5–6', content: 'Báo cáo công việc' },
+                    { week: 'Tuần 7–8', content: 'Hợp đồng cơ bản' },
+                    { week: 'Tuần 9–10', content: 'Hợp đồng nâng cao' },
+                    { week: 'Tuần 11–12', content: 'Tổng kết và thực hành' }
+                ],
+                teacher: {
+                    name: 'Ms. Jennifer Lee',
+                    title: 'Giáo viên tiếng Anh · 10 năm kinh nghiệm',
+                    certs: ['Chứng chỉ TESOL', 'MBA'],
+                    desc: 'Chuyên về viết văn bản kinh doanh.'
+                },
+                reviews: [
+                    { name: 'Anh Hoàng (trưởng phòng nhân sự)', date: '14/06/2026', stars: 5, text: 'Khóa học giúp tôi viết email và báo cáo chuyên nghiệp hơn.' }
+                ],
+                schedules: [
+                    { date: '10/08/2026', days: 'Thứ 2, 4', time: '19:00 - 20:15', status: 'available', spots: 4 }
+                ]
+            }
+        };
+
+        // ============================================================
+        // LẤY THAM SỐ TỪ URL
+        // ============================================================
+        function getCourseId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('course') || 'flyers';
+        }
+
+        // ============================================================
+        // RENDER DỮ LIỆU LÊN TRANG
+        // ============================================================
+        function renderCourseDetail(courseId) {
+            const course = courseData[courseId];
+            if (!course) {
+                document.getElementById('course-name').textContent = 'Không tìm thấy khóa học';
+                return;
+            }
+
+            // Breadcrumb
+            document.getElementById('breadcrumb-level').textContent = course.name;
+
+            // Gallery
+            document.getElementById('course-icon').className = `fas ${course.icon}`;
+            document.getElementById('level-badge').innerHTML = `<i class="fas fa-star"></i> ${course.level} · ${course.age}`;
+            document.getElementById('course-subtitle').textContent = course.subtitle;
+
+            // Info
+            document.getElementById('course-category').innerHTML = `<i class="fas ${course.categoryIcon}"></i> ${course.category}`;
+            document.getElementById('course-name').textContent = course.name;
+            document.getElementById('course-subtitle-2').textContent = course.subtitle;
+
+            // Rating
+            const fullStars = Math.floor(course.stars);
+            const halfStar = course.stars % 1 >= 0.5;
+            let starsHTML = '';
+            for (let i = 0; i < fullStars; i++) starsHTML += '<i class="fas fa-star"></i>';
+            if (halfStar) starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            document.getElementById('course-stars').innerHTML = starsHTML;
+            document.getElementById('review-count').textContent = `(${course.reviews} đánh giá)`;
+            document.getElementById('student-count').innerHTML = `<i class="fas fa-user-graduate"></i> ${course.students} học viên`;
+
+            // Price
+            document.getElementById('current-price').textContent = course.price;
+            document.getElementById('original-price').textContent = course.originalPrice;
+            document.getElementById('discount-badge').textContent = course.discount;
+
+            // Description
+            document.getElementById('course-description').textContent = course.description;
+
+            // Features
+            const featuresHTML = course.features.map(f => 
+                `<li><i class="fas fa-check-circle"></i> ${f}</li>`
+            ).join('');
+            document.getElementById('course-features').innerHTML = featuresHTML;
+
+            // Tab: Description
+            const descHTML = `
+                <p style="margin-bottom: 12px;">${course.description}</p>
+                <p style="margin-top: 12px; background: #f8fcff; padding: 12px 16px; border-radius: 12px;">
+                    <i class="fas fa-info-circle" style="color: #0b2a4e;"></i>
+                    <strong>Học phí đã bao gồm:</strong> Giáo trình, tài liệu bài tập, video ghi hình, chứng chỉ hoàn thành khóa học.
+                </p>
+                <ul>
+                    ${course.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('')}
+                </ul>
+            `;
+            document.getElementById('tab-description').innerHTML = descHTML;
+
+            // Tab: Schedule
+            const scheduleHTML = course.schedule.map(s => 
+                `<div class="item"><span>${s.week}</span> <span>${s.content}</span></div>`
+            ).join('');
+            document.getElementById('schedule-grid').innerHTML = scheduleHTML;
+
+            // Tab: Teacher
+            const teacherHTML = `
+                <div class="teacher-card">
+                    <div class="avatar"><i class="fas fa-user-tie"></i></div>
+                    <div class="info">
+                        <h4>${course.teacher.name}</h4>
+                        <div class="title">${course.teacher.title}</div>
+                        ${course.teacher.certs.map(c => `<p><i class="fas fa-check-circle" style="color: #facc15;"></i> ${c}</p>`).join('')}
+                        <p>${course.teacher.desc}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('teacher-info').innerHTML = teacherHTML;
+
+            // Tab: Reviews
+            const reviewsHTML = course.reviews.map(r => {
+                let stars = '';
+                for (let i = 0; i < Math.floor(r.stars); i++) stars += '<i class="fas fa-star"></i>';
+                if (r.stars % 1 >= 0.5) stars += '<i class="fas fa-star-half-alt"></i>';
+                return `
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="name">${r.name}</span>
+                            <span class="date">${r.date}</span>
+                        </div>
+                        <div class="review-stars">${stars}</div>
+                        <div class="review-text">${r.text}</div>
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('reviews-container').innerHTML = reviewsHTML;
+
+            // ============================================================
+            // LỊCH KHAI GIẢNG (Schedule Sidebar)
+            // ============================================================
+            if (course.schedules && course.schedules.length > 0) {
+                const scheduleListHTML = course.schedules.map(s => {
+                    let statusText = '';
+                    let statusClass = '';
+                    if (s.status === 'available') {
+                        statusText = `✅ Còn ${s.spots} chỗ`;
+                        statusClass = 'available';
+                    } else if (s.status === 'limited') {
+                        statusText = `⚠️ Sắp hết (còn ${s.spots} chỗ)`;
+                        statusClass = 'limited';
+                    } else {
+                        statusText = '❌ Đã kín';
+                        statusClass = 'full';
+                    }
+                    return `
+                        <div class="schedule-item">
+                            <div class="class-date">📅 Khai giảng: ${s.date}</div>
+                            <div class="class-time">
+                                <span><i class="fas fa-clock"></i> ${s.days} · ${s.time}</span>
+                            </div>
+                            <span class="status ${statusClass}">${statusText}</span>
+                        </div>
+                    `;
+                }).join('');
+                document.getElementById('schedule-list').innerHTML = scheduleListHTML;
+            } else {
+                document.getElementById('schedule-list').innerHTML = '<p style="text-align:center;color:#64748b;padding:12px;">Đang cập nhật lịch khai giảng</p>';
+            }
+
+            // ============================================================
+            // RELATED COURSES
+            // ============================================================
+            const relatedCourses = Object.keys(courseData).filter(key => key !== courseId);
+            const relatedHTML = relatedCourses.slice(0, 4).map(key => {
+                const c = courseData[key];
+                return `
+                    <a href="?course=${c.id}" class="related-card">
+                        <div class="icon"><i class="fas ${c.icon}"></i></div>
+                        <h4>${c.name}</h4>
+                        <p style="font-size: 0.9rem; color: #64748b;">${c.level} · ${c.age}</p>
+                        <span class="price">${c.price}</span>
+                    </a>
+                `;
+            }).join('');
+            document.getElementById('related-grid').innerHTML = relatedHTML;
+        }
+
+        // ============================================================
+        // TABS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render dữ liệu
+            const courseId = getCourseId();
+            renderCourseDetail(courseId);
+
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tabs-nav button');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    contents.forEach(c => c.classList.remove('active'));
+                    const target = document.getElementById(this.dataset.tab);
+                    if (target) target.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

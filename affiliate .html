@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IvyEdu - Giải pháp Affiliate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        /* ============================================= */
+        /* ===== HEADER ===== */
+        /* ============================================= */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 0 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-text .blue {
+            color: #1A3C6E;
+        }
+
+        .logo-text .red {
+            color: #C8102E;
+        }
+
+        .logo-text .gray {
+            color: #1e293b;
+        }
+
+        .logo-slogan {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #1A3C6E;
+            text-transform: uppercase;
+            padding-left: 12px;
+            border-left: 2px solid #C8102E;
+            line-height: 1.3;
+        }
+
+        .logo-slogan small {
+            display: block;
+            font-weight: 300;
+            font-size: 8px;
+            color: #94a3b8;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 26px;
+            }
+            .logo-slogan {
+                font-size: 8px;
+            }
+            .logo-slogan small {
+                font-size: 7px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 22px;
+            }
+            .logo-slogan {
+                display: none;
+            }
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-main>li {
+            list-style: none;
+            position: relative;
+        }
+
+        .nav-main>li>a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 15px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-main>li>a:hover {
+            background: #eef2f6;
+            color: #1A3C6E;
+        }
+
+        .nav-main>li>a.active {
+            background: #1A3C6E;
+            color: #fff;
+        }
+
+        .nav-main>li>a .arrow {
+            font-size: 11px;
+            margin-left: 4px;
+            color: #94a3b8;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 42px;
+            left: 0;
+            min-width: 240px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(6px);
+            transition: all 0.25s ease;
+            border: 1px solid #f0f2f5;
+        }
+
+        .nav-main>li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown li {
+            list-style: none;
+        }
+
+        .dropdown li a {
+            display: block;
+            padding: 8px 22px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .dropdown li a:hover {
+            background: #f1f5f9;
+            color: #1A3C6E;
+        }
+
+        .dropdown .group-title {
+            font-weight: 600;
+            color: #0f172a;
+            padding: 8px 22px 4px;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: #64748b;
+        }
+
+        .dropdown .divider {
+            height: 1px;
+            background: #e9edf2;
+            margin: 6px 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-actions a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.2s;
+        }
+
+        .btn-login {
+            color: #1A3C6E;
+            background: transparent;
+            border: 1.5px solid #dce1e8;
+        }
+
+        .btn-login:hover {
+            background: #f1f5f9;
+            border-color: #b0bccb;
+        }
+
+        .btn-register {
+            color: #fff;
+            background: #1A3C6E;
+            border: 1.5px solid #1A3C6E;
+        }
+
+        .btn-register:hover {
+            background: #0F2B4F;
+            border-color: #0F2B4F;
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                padding: 0 20px;
+            }
+            .nav-main>li>a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 14px 0;
+                gap: 12px;
+            }
+            .nav-main {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px;
+                width: 100%;
+                order: 3;
+                border-top: 1px solid #ecf0f4;
+                padding-top: 12px;
+            }
+            .nav-main>li>a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+            .header-actions {
+                gap: 6px;
+            }
+            .header-actions a {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .dropdown {
+                min-width: 180px;
+                left: -10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0 12px;
+            }
+            .nav-main>li>a {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+            .header-actions a {
+                font-size: 12px;
+                padding: 4px 12px;
+            }
+        }
+
+        /* ============================================= */
+        /* ===== BANNER ===== */
+        /* ============================================= */
+        .page-banner {
+            background: linear-gradient(135deg, #1A3C6E, #0f2b4f);
+            padding: 60px 40px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(200, 16, 46, 0.1);
+            border-radius: 50%;
+        }
+
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(200, 16, 46, 0.08);
+            border-radius: 50%;
+        }
+
+        .page-banner h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-banner h1 .highlight {
+            color: #C8102E;
+        }
+
+        .page-banner p {
+            font-size: 18px;
+            opacity: 0.8;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================= */
+        /* ===== GIỚI THIỆU AFFILIATE ===== */
+        /* ============================================= */
+        .affiliate-intro {
+            padding: 60px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .affiliate-intro .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .affiliate-intro .intro-image {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+            border-radius: 20px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .affiliate-intro .intro-image::after {
+            content: 'Hợp tác bền vững';
+            position: absolute;
+            bottom: 24px;
+            right: 30px;
+            font-size: 14px;
+            opacity: 0.3;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .affiliate-intro .intro-text h2 {
+            font-size: 34px;
+            color: #1A3C6E;
+            margin-bottom: 16px;
+        }
+
+        .affiliate-intro .intro-text h2 .highlight {
+            color: #C8102E;
+        }
+
+        .affiliate-intro .intro-text p {
+            font-size: 16px;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .affiliate-intro .intro-text .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .affiliate-intro .intro-text .stats .stat-item {
+            text-align: center;
+            background: #f8faff;
+            padding: 16px 12px;
+            border-radius: 12px;
+            border: 1px solid #e9edf4;
+        }
+
+        .affiliate-intro .intro-text .stats .stat-item .number {
+            font-size: 24px;
+            font-weight: 800;
+            color: #C8102E;
+            display: block;
+        }
+
+        .affiliate-intro .intro-text .stats .stat-item .label {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* ============================================= */
+        /* ===== LỢI ÍCH ĐỐI TÁC ===== */
+        /* ============================================= */
+        .benefits {
+            background: #f8faff;
+            padding: 60px 40px;
+        }
+
+        .benefits .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            color: #1A3C6E;
+            margin-bottom: 12px;
+        }
+
+        .section-title .highlight {
+            color: #C8102E;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 22px;
+            text-align: center;
+            border: 1px solid #e9edf4;
+            transition: all 0.4s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(26, 60, 110, 0.08);
+            border-color: #C8102E;
+        }
+
+        .benefit-card .icon-wrap {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .benefit-card:nth-child(1) .icon-wrap {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+        .benefit-card:nth-child(2) .icon-wrap {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+        }
+        .benefit-card:nth-child(3) .icon-wrap {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+        .benefit-card:nth-child(4) .icon-wrap {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+        }
+
+        .benefit-card h4 {
+            font-size: 17px;
+            color: #1A3C6E;
+            margin-bottom: 4px;
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ============================================= */
+        /* ===== KHÓA HỌC CUNG CẤP ===== */
+        /* ============================================= */
+        .courses-provide {
+            padding: 60px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .course-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e9edf4;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(26, 60, 110, 0.08);
+        }
+
+        .course-card .course-image {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #fff;
+        }
+
+        .course-card:nth-child(1) .course-image {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+        .course-card:nth-child(2) .course-image {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+        }
+        .course-card:nth-child(3) .course-image {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+        .course-card:nth-child(4) .course-image {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+        }
+        .course-card:nth-child(5) .course-image {
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+        }
+        .course-card:nth-child(6) .course-image {
+            background: linear-gradient(135deg, #C8102E, #a00d24);
+        }
+
+        .course-card .course-body {
+            padding: 20px 22px 24px;
+        }
+
+        .course-card .course-body .tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #1A3C6E;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+
+        .course-card .course-body h4 {
+            font-size: 18px;
+            color: #1A3C6E;
+            margin-bottom: 4px;
+        }
+
+        .course-card .course-body .level {
+            font-size: 13px;
+            color: #C8102E;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .course-card .course-body p {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ============================================= */
+        /* ===== CHÍNH SÁCH HOA HỒNG ===== */
+        /* ============================================= */
+        .commission {
+            background: #f8faff;
+            padding: 60px 40px;
+        }
+
+        .commission .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .commission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .commission-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px;
+            text-align: center;
+            border: 1px solid #e9edf4;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .commission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(26, 60, 110, 0.08);
+        }
+
+        .commission-card.popular {
+            border-color: #C8102E;
+            box-shadow: 0 8px 30px rgba(200, 16, 46, 0.08);
+        }
+
+        .commission-card.popular .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C8102E;
+            color: #fff;
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .commission-card .icon {
+            font-size: 40px;
+            color: #1A3C6E;
+            margin-bottom: 8px;
+        }
+
+        .commission-card h4 {
+            font-size: 20px;
+            color: #1A3C6E;
+            margin-bottom: 4px;
+        }
+
+        .commission-card .commission-rate {
+            font-size: 36px;
+            font-weight: 800;
+            color: #C8102E;
+            margin-bottom: 4px;
+        }
+
+        .commission-card .commission-rate span {
+            font-size: 14px;
+            font-weight: 400;
+            color: #94a3b8;
+        }
+
+        .commission-card ul {
+            list-style: none;
+            margin: 16px 0 20px;
+            text-align: left;
+        }
+
+        .commission-card ul li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .commission-card ul li i {
+            color: #C8102E;
+            font-size: 12px;
+        }
+
+        .commission-card .btn-commission {
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 30px;
+            background: #1A3C6E;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .commission-card .btn-commission:hover {
+            background: #C8102E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.3);
+        }
+
+        .commission-card.popular .btn-commission {
+            background: #C8102E;
+        }
+
+        .commission-card.popular .btn-commission:hover {
+            background: #a00d24;
+        }
+
+        /* ============================================= */
+        /* ===== FORM ĐĂNG KÝ ĐỐI TÁC ===== */
+        /* ============================================= */
+        .partner-form {
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .partner-form .form-wrapper {
+            background: #fff;
+            border-radius: 20px;
+            padding: 48px 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e9edf4;
+        }
+
+        .partner-form .form-wrapper h3 {
+            font-size: 26px;
+            color: #1A3C6E;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .partner-form .form-wrapper h3 .highlight {
+            color: #C8102E;
+        }
+
+        .partner-form .form-wrapper .form-desc {
+            text-align: center;
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 28px;
+        }
+
+        .partner-form .form-group {
+            margin-bottom: 18px;
+        }
+
+        .partner-form .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .partner-form .form-group label .required {
+            color: #C8102E;
+        }
+
+        .partner-form .form-group input,
+        .partner-form .form-group select,
+        .partner-form .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1.5px solid #e2e8f0;
+            font-size: 14px;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #fafbfc;
+        }
+
+        .partner-form .form-group input:focus,
+        .partner-form .form-group select:focus,
+        .partner-form .form-group textarea:focus {
+            border-color: #1A3C6E;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(26, 60, 110, 0.08);
+        }
+
+        .partner-form .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .partner-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .partner-form .form-group-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 16px 0 20px;
+        }
+
+        .partner-form .form-group-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            margin-top: 2px;
+            accent-color: #1A3C6E;
+            cursor: pointer;
+        }
+
+        .partner-form .form-group-checkbox label {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .partner-form .form-group-checkbox label a {
+            color: #1A3C6E;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .partner-form .form-group-checkbox label a:hover {
+            color: #C8102E;
+            text-decoration: underline;
+        }
+
+        .partner-form .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1A3C6E, #2a5a8e);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .partner-form .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(26, 60, 110, 0.25);
+        }
+
+        .partner-form .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ============================================= */
+        /* ===== FOOTER ===== */
+        /* ============================================= */
+       
+  :root{
+    --navy: #1F295F;
+    --navy-dark: #16204a;
+    --red: #B12637;
+    --text-light: #E8EAF2;
+    --text-muted: #B7BEDA;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#fff;
+  }
+
+  .footer{
+    background: var(--navy);
+    color: var(--text-light);
+    padding: 40px 24px 20px;
+  }
+
+  .footer__grid{
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr 1fr 1.3fr 1fr;
+    gap: 24px;
+  }
+
+  .footer__col h4{
+    margin: 0 0 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .footer__col ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__col ul li{
+    margin-bottom: 8px;
+  }
+
+  .footer__col ul li a{
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: color .2s ease;
+  }
+
+  .footer__col ul li a:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__map-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer__map{
+    width: 100%;
+    aspect-ratio: 16/10;
+    border: 0;
+    border-radius: 6px;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .footer__map-link{
+    align-self: flex-end;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+
+  .footer__map-link:hover{
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .footer__bottom{
+    max-width: 1140px;
+    margin: 32px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .footer__bottom p{
+    margin: 0 0 6px;
+  }
+
+  .footer__bottom a{
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer__bottom a:hover{
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px){
+    .footer__grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 520px){
+    .footer__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+        /* ============================================= */
+        /* ===== RESPONSIVE ===== */
+        /* ============================================= */
+        @media (max-width: 1024px) {
+            .page-banner h1 {
+                font-size: 34px;
+            }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .commission-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .affiliate-intro .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .affiliate-intro .intro-image {
+                height: 220px;
+            }
+            .footer {
+                padding: 40px 24px 0;
+            }
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .footer-col:first-child {
+                grid-column: 1 / -1;
+            }
+            .footer-col .desc {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-banner h1 {
+                font-size: 28px;
+            }
+            .page-banner p {
+                font-size: 15px;
+            }
+            .affiliate-intro,
+            .benefits,
+            .courses-provide,
+            .commission,
+            .partner-form {
+                padding: 40px 20px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
+            .section-subtitle {
+                font-size: 14px;
+                margin-bottom: 32px;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .commission-grid {
+                grid-template-columns: 1fr;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+            .affiliate-intro .intro-text h2 {
+                font-size: 26px;
+            }
+            .affiliate-intro .intro-text .stats {
+                grid-template-columns: 1fr;
+            }
+            .partner-form .form-wrapper {
+                padding: 32px 24px;
+            }
+            .partner-form .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .footer {
+                padding: 30px 20px 0;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-col:first-child {
+                grid-column: 1;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+            }
+            .footer-bottom .links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .footer-bottom .links .divider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-banner {
+                padding: 40px 20px;
+            }
+            .page-banner h1 {
+                font-size: 24px;
+            }
+            .affiliate-intro,
+            .benefits,
+            .courses-provide,
+            .commission,
+            .partner-form {
+                padding: 30px 16px;
+            }
+            .section-title {
+                font-size: 22px;
+            }
+            .affiliate-intro .intro-image {
+                height: 170px;
+                font-size: 50px;
+            }
+            .affiliate-intro .intro-text h2 {
+                font-size: 22px;
+            }
+            .affiliate-intro .intro-text p {
+                font-size: 14px;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .benefit-card {
+                padding: 20px 16px;
+            }
+            .course-card .course-image {
+                height: 130px;
+                font-size: 36px;
+            }
+            .course-card .course-body h4 {
+                font-size: 16px;
+            }
+            .commission-card {
+                padding: 24px 18px;
+            }
+            .commission-card .commission-rate {
+                font-size: 28px;
+            }
+            .partner-form .form-wrapper {
+                padding: 24px 16px;
+            }
+            .partner-form .form-wrapper h3 {
+                font-size: 22px;
+            }
+            .footer {
+                padding: 24px 16px 0;
+            }
+            .footer-col .flogo {
+                font-size: 24px;
+            }
+            .footer-col h4 {
+                font-size: 15px;
+            }
+            .footer-col .social a {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- ===== HEADER ===== -->
+    <!-- ========================================== -->
+    <header class="header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                <div class="logo-text">
+                    <span class="blue">I</span>
+                    <span class="gray">v</span>
+                    <span class="gray">y</span>
+                    <span class="red">E</span>
+                    <span class="gray">d</span>
+                    <span class="gray">u</span>
+                </div>
+                <div class="logo-slogan">
+                    A Venue with Multiple Values
+                    <small>IvyEdu</small>
+                </div>
+            </a>
+
+            <ul class="nav-main">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                    <a href="about.html">
+                        Về IvyEdu <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Abouts/about.css">Tầm nhìn - Sứ mệnh</a></li>
+                        <li><a href="Abouts/about.css">Giá trị cốt lõi</a></li>
+                        <li><a href="Abouts/about.css">Cột mốc phát triển</a></li>
+                        <li><a href="Abouts/about.css">Đội ngũ nhân sự</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Sản phẩm <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="Course.html">Trung tâm ngoại ngữ IVYPrep</a></li>
+                        <li><a href="Course.html">IVYBUUDY</a></li>
+                        <li><a href="Course.html">IVYHUB</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="solution.html" class="active">
+                        Giải pháp <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li class="group-title">B2C – Cá nhân</li>
+                        <li><a href="solution.html#online">Khóa học Online</a></li>
+                        <li><a href="solution.html#programs">Chương trình đào tạo</a></li>
+                        <li><a href="solution.html#pricing">Báo giá</a></li>
+                        <li class="divider"></li>
+                        <li class="group-title">B2B – Doanh nghiệp / Nhà trường</li>
+                        <li><a href="solution.html#programs">Giải pháp doanh nghiệp</a></li>
+                        <li><a href="solution.html#pricing">Báo giá</a></li>
+                        <li class="divider"></li>
+                        <li class="group-title">B2B2C – Đối tác / Affiliate</li>
+                        <li><a href="affiliate.html">Giới thiệu đối tác</a></li>
+                        <li><a href="affiliate.html">Affiliate</a></li>
+                        <li><a href="affiliate.html#commission">Chính sách hoa hồng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Tuyển dụng <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="#">Làm giáo viên</a></li>
+                        <li><a href="#">Làm công tác viên giảng dạy</a></li>
+                        <li><a href="#">Làm nhân viên parttime</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Tin tức</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="#" class="btn-login">Login</a>
+                <a href="#" class="btn-register">Register</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- ===== BANNER ===== -->
+    <!-- ========================================== -->
+    <section class="page-banner">
+        <h1>Giải pháp <span class="highlight">Affiliate</span></h1>
+        <p>Hợp tác cùng IvyEdu - Phát triển bền vững</p>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== GIỚI THIỆU AFFILIATE ===== -->
+    <!-- ========================================== -->
+    <section class="affiliate-intro" id="intro">
+        <div class="intro-grid">
+            <div class="intro-image">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="intro-text">
+                <h2>Hợp tác <span class="highlight">Affiliate</span> cùng IvyEdu</h2>
+                <p>
+                    IvyEdu mở rộng cơ hội hợp tác với các <strong>đối tác Affiliate</strong>, 
+                    giảng viên, trung tâm và cá nhân mong muốn đồng hành trong hệ sinh thái giáo dục toàn diện.
+                </p>
+                <p>
+                    Chúng tôi cung cấp các <strong>khóa học chất lượng cao</strong> và <strong>chính sách hoa hồng hấp dẫn</strong>, 
+                    giúp bạn phát triển thu nhập bền vững cùng IvyEdu.
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="number">20%</span>
+                        <span class="label">Hoa hồng tối đa</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">50+</span>
+                        <span class="label">Đối tác hiện tại</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">120K+</span>
+                        <span class="label">Học viên tiếp cận</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== LỢI ÍCH ĐỐI TÁC ===== -->
+    <!-- ========================================== -->
+    <section class="benefits" id="benefits">
+        <div class="section-container">
+            <h2 class="section-title">
+                Lợi ích <span class="highlight">Đối tác</span>
+            </h2>
+            <p class="section-subtitle">
+                Đồng hành cùng IvyEdu, bạn nhận được những giá trị thiết thực
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon-wrap"><i class="fas fa-percent"></i></div>
+                    <h4>Hoa hồng hấp dẫn</h4>
+                    <p>Nhận hoa hồng lên đến 20% cho mỗi học viên đăng ký thành công</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrap"><i class="fas fa-chart-line"></i></div>
+                    <h4>Thu nhập thụ động</h4>
+                    <p>Xây dựng nguồn thu nhập bền vững mà không cần đầu tư lớn</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Khóa học chất lượng</h4>
+                    <p>Giới thiệu sản phẩm giáo dục uy tín, chất lượng cao</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrap"><i class="fas fa-headset"></i></div>
+                    <h4>Hỗ trợ 24/7</h4>
+                    <p>Đội ngũ tư vấn sẵn sàng hỗ trợ bạn mọi lúc</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== KHÓA HỌC CUNG CẤP ===== -->
+    <!-- ========================================== -->
+    <section class="courses-provide" id="courses">
+        <h2 class="section-title">
+            Khóa học <span class="highlight">Cung cấp</span>
+        </h2>
+        <p class="section-subtitle">
+            Các khóa học chất lượng cao dành cho đối tác Affiliate giới thiệu
+        </p>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-user-graduate"></i></div>
+                <div class="course-body">
+                    <span class="tag">🔥 Hot</span>
+                    <h4>Anh ngữ Vận dụng</h4>
+                    <div class="level">📚 Tất cả cấp độ</div>
+                    <p>Phát triển 4 kỹ năng Nghe - Nói - Đọc - Viết thực tế</p>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-tasks"></i></div>
+                <div class="course-body">
+                    <span class="tag">⭐ Phổ biến</span>
+                    <h4>IELTS Test Prep</h4>
+                    <div class="level">🎯 Cam kết đầu ra</div>
+                    <p>Lộ trình cá nhân hóa, đạt 6.5 - 8.0 IELTS</p>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-rocket"></i></div>
+                <div class="course-body">
+                    <span class="tag">🚀 Mới</span>
+                    <h4>Dự án cá nhân</h4>
+                    <div class="level">💡 Sáng tạo</div>
+                    <p>Rèn luyện thuyết trình, lãnh đạo và tư duy phản biện</p>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-chalkboard-teacher"></i></div>
+                <div class="course-body">
+                    <span class="tag">📘 Chuyên sâu</span>
+                    <h4>Tiếng Anh Online</h4>
+                    <div class="level">💻 Học mọi lúc</div>
+                    <p>Học trực tuyến với giáo viên giàu kinh nghiệm</p>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-users"></i></div>
+                <div class="course-body">
+                    <span class="tag">👥 Nhóm</span>
+                    <h4>Lớp học nhóm</h4>
+                    <div class="level">🤝 Tương tác cao</div>
+                    <p>Phương pháp học tập tương tác nhóm hiệu quả</p>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"><i class="fas fa-user-tie"></i></div>
+                <div class="course-body">
+                    <span class="tag">🎯 Cá nhân</span>
+                    <h4>Kèm 1-1 Online</h4>
+                    <div class="level">📖 Cá nhân hóa</div>
+                    <p>Lộ trình học riêng biệt theo mục tiêu của học viên</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== CHÍNH SÁCH HOA HỒNG ===== -->
+    <!-- ========================================== -->
+    <section class="commission" id="commission">
+        <div class="section-container">
+            <h2 class="section-title">
+                Chính sách <span class="highlight">Hoa hồng</span>
+            </h2>
+            <p class="section-subtitle">
+                Mức hoa hồng hấp dẫn dành cho các đối tác Affiliate của IvyEdu
+            </p>
+
+            <div class="commission-grid">
+                <div class="commission-card">
+                    <div class="icon"><i class="fas fa-user"></i></div>
+                    <h4>Cá nhân</h4>
+                    <div class="commission-rate">10% <span>hoa hồng</span></div>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Cho mỗi học viên đăng ký</li>
+                        <li><i class="fas fa-check-circle"></i> Không giới hạn số lượng</li>
+                        <li><i class="fas fa-check-circle"></i> Hỗ trợ tư vấn khách hàng</li>
+                    </ul>
+                    <a href="#" class="btn-commission">Đăng ký ngay</a>
+                </div>
+
+                <div class="commission-card popular">
+                    <span class="popular-badge">⭐ Phổ biến</span>
+                    <div class="icon"><i class="fas fa-building"></i></div>
+                    <h4>Doanh nghiệp</h4>
+                    <div class="commission-rate">15% <span>hoa hồng</span></div>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Ưu đãi đặc biệt cho doanh nghiệp</li>
+                        <li><i class="fas fa-check-circle"></i> Tài nguyên marketing miễn phí</li>
+                        <li><i class="fas fa-check-circle"></i> Quản lý khách hàng hiệu quả</li>
+                    </ul>
+                    <a href="#" class="btn-commission">Đăng ký ngay</a>
+                </div>
+
+                <div class="commission-card">
+                    <div class="icon"><i class="fas fa-handshake"></i></div>
+                    <h4>Đối tác chiến lược</h4>
+                    <div class="commission-rate">20% <span>hoa hồng</span></div>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Mức hoa hồng cao nhất</li>
+                        <li><i class="fas fa-check-circle"></i> Hỗ trợ phát triển thương hiệu</li>
+                        <li><i class="fas fa-check-circle"></i> Ưu đãi độc quyền</li>
+                    </ul>
+                    <a href="#" class="btn-commission">Đăng ký ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== FORM ĐĂNG KÝ ĐỐI TÁC ===== -->
+    <!-- ========================================== -->
+    <section class="partner-form" id="register">
+        <div class="form-wrapper">
+            <h3>Đăng ký trở thành <span class="highlight">Đối tác</span></h3>
+            <p class="form-desc">Điền thông tin để bắt đầu hành trình hợp tác cùng IvyEdu</p>
+
+            <form id="partnerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Họ và tên <span class="required">*</span></label>
+                        <input type="text" placeholder="Nhập họ tên của bạn" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại <span class="required">*</span></label>
+                        <input type="tel" placeholder="Nhập số điện thoại" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" placeholder="Nhập email của bạn" required />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Đối tác loại</label>
+                        <select>
+                            <option value="ca-nhan">Cá nhân</option>
+                            <option value="doanh-nghiep">Doanh nghiệp</option>
+                            <option value="trung-tam">Trung tâm / Trường học</option>
+                            <option value="giang-vien">Giảng viên</option>
+                            <option value="khac">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quy mô hoạt động</label>
+                        <select>
+                            <option value="1-5">1 - 5 học viên</option>
+                            <option value="6-20">6 - 20 học viên</option>
+                            <option value="21-50">21 - 50 học viên</option>
+                            <option value="50+">Trên 50 học viên</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Giới thiệu về bạn / tổ chức</label>
+                    <textarea placeholder="Chia sẻ đôi nét về bạn và mục tiêu hợp tác..."></textarea>
+                </div>
+
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="policyCheck" required />
+                    <label for="policyCheck">
+                        Tôi đã đọc và đồng ý với <a href="#">Chính sách đối tác</a> và
+                        <a href="#">Điều khoản hợp tác</a> của IvyEdu.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                    <i class="fas fa-paper-plane"></i> Đăng ký ngay
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ===== FOOTER ===== -->
+    <!-- ========================================== -->
+    <footer class="footer">
+  <div class="footer__grid">
+
+    <div class="footer__col">
+      <h4>IvyEdu</h4>
+      <ul>
+        <li><a href="#">Về chúng tôi</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+        <li><a href="#">Tin tức</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Sản phẩm</h4>
+      <ul>
+        <li><a href="#">Khoá học</a></li>
+        <li><a href="#">Giải pháp giáo dục</a></li>
+        <li><a href="#">Đối tác</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Hỗ trợ</h4>
+      <ul>
+        <li><a href="#">Câu hỏi thường gặp</a></li>
+        <li><a href="#">Chính sách</a></li>
+        <li><a href="#">Điều khoản</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="#">Hotline</a></li>
+        <li><a href="#">Email</a></li>
+        <li><a href="#">Địa chỉ</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <div class="footer__map-wrap">
+        <iframe
+          class="footer__map"
+          src="https://www.google.com/maps?q=10.7757177,106.6823607&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Vị trí công ty trên Google Maps">
+        </iframe>
+        <a class="footer__map-link" href="https://maps.app.goo.gl/5dpxp6A7uuXxUA2p8" target="_blank" rel="noopener noreferrer">
+          Mở trong Google Maps ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Kênh truyền thông</h4>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Youtube</a></li>
+        <li><a href="#">TikTok</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p>© 2026 IvyEdu. All rights reserved.</p>
+    <p>Sử dụng nội dung ở trang này và dịch vụ tại IvyEdu có nghĩa là bạn đồng ý với <a href="#">Thỏa thuận sử dụng</a> và <a href="#">Chính sách bảo mật</a> của chúng tôi.</p>
+  </div>
+</footer>
+
+    <script>
+        // ===== XỬ LÝ CHECKBOX =====
+        const policyCheck = document.getElementById('policyCheck');
+        const submitBtn = document.getElementById('submitBtn');
+
+        policyCheck.addEventListener('change', function() {
+            submitBtn.disabled = !this.checked;
+        });
+
+        // ===== XỬ LÝ SUBMIT =====
+        document.getElementById('partnerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = this.querySelector('input[type="text"]').value.trim();
+            const phone = this.querySelector('input[type="tel"]').value.trim();
+            const email = this.querySelector('input[type="email"]').value.trim();
+
+            if (!name || !phone || !email) {
+                alert('⚠️ Vui lòng điền đầy đủ thông tin bắt buộc!');
+                return;
+            }
+
+            alert('✅ Đăng ký đối tác thành công!\n\n' +
+                '👤 Họ tên: ' + name + '\n' +
+                '📱 SĐT: ' + phone + '\n' +
+                '📧 Email: ' + email + '\n\n' +
+                'IvyEdu sẽ liên hệ tư vấn chi tiết trong 24h tới! 🎉');
+
+            this.reset();
+            submitBtn.disabled = true;
+        });
+    </script>
+
+</body>
+</html>
